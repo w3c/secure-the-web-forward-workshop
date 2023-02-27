@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {{ page.title }} - W3C Workshop Secure the Web Forward
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ page.base }}style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content=
+    "{{page.title}}">
+    <meta property="og:description" content=
+    "Bringing together experts to drive developer awareness and adoption of Web security standards and practices">
+    <!--<meta property="og:image" content=
+    "https://www.w3.org/2020/06/machine-learning-workshop/images/banner.png">-->
+  </head>
+  <body>
+    <header class="header">
+      <div id="logo">
+        <a href="https://www.w3.org/"><img alt="W3C" src=
+        "https://www.w3.org/Icons/w3c_home"></a>
+      </div>
+      <div id="top">
+        <h1>
+          W3C Workshop Secure the Web Forward
+        </h1>
+        <h2>
+          Driving developer awareness and adoption of Web security standards & practices
+        </h2>
+	<h3>June 7-8 2023; London, UK</h3>
+	<h3>Presented by W3C, OpenSSF, OWASP, OpenJS</h3>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          {% for item in site.data.pages.pages %}
+          {% assign absolute_url = "/" | append: item.url %}
+          {% assign isThisPage = false %}
+          {% if absolute_url == page.url %}
+          {% assign isThisPage = true %}
+          {% endif %}
+          {% if absolute_url == "/index.html" and page.url == "/" %}
+          {% assign isThisPage = true %}
+          {% endif %}
+        <li>
+          <a {% if isThisPage or page.parent == item.url %}class="active-tab" {% endif %}{% if isThisPage == false %}href="{{page.base }}{{ item.url }}"{% endif %}>{{ item.title }}</a>
+        </li>
+        {% endfor %}
+        </ul>
+      </nav>
+      <h2>{{title}}</h2>
+    </header>
+    {% include sponsors.html %}
+    <main>
+      {{ content }}
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>
+        Questions? Contact Dominique Hazael-Massieux &lt;<a href=
+        "mailto:dom@w3.org">dom@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/secure-the-web-forward-workshop/">pull request on
+        GitHub</a>, or by emailing Dominique Hazael-Massieux &lt;<a href=
+        "mailto:dom@w3.org">dom@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="{{page.base }}script.js">
+    </script>
+    <script src="{{page.base }}submit.js">
+    </script>
+  </body>
+</html>

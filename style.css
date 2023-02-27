@@ -1,0 +1,812 @@
+      @import "https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css";
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: #fafafa;
+}
+
+html {
+  /*font-size: 14px;*/
+  padding: .5em;
+}
+
+body {
+  border-radius: .6em;
+  color: #333;
+  font: 1.1em/1.3 Helvetica, Arial, Verdana, sans-serif;
+  hyphens: none;
+  margin: 0 auto;
+  max-width: 65em;
+  padding: .5em;
+}
+
+.header :first-child {
+  margin-top: 0;
+}
+
+header #logo {
+  height: 72px;
+}
+
+header #logo img {
+  float: left;
+}
+
+header #translations {
+  float: right;
+}
+
+#top {
+        background-color: black;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 454px;
+  color: white;
+  position: relative;
+}
+
+#top.small {
+    background-color: black;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 100px;
+  position: relative;
+}
+
+
+#top h1,
+#top h2 {
+  padding: 1rem;
+  color: white;
+  text-shadow: 4px 4px 20px black;
+}
+
+@media all and (min-width: 787px) {
+  #top h1,
+  #top h2 {
+    margin-left: 450px;
+  }
+}
+
+#top.small h1 {
+    text-shadow: none;
+    margin-left: 100px;
+}
+
+
+#top h1 a:link, #top h1 a:visited { color: white;}
+
+#top a.credit { position: absolute; bottom:0; right:0;}
+
+.footer :last-child {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+dl,
+ul,
+ol {
+  margin: 1.5rem 0;
+}
+
+a,
+h1,
+h2,
+.menu a.active-tab {
+  color: #005a9c;
+}
+
+a:hover {
+  color: #111;
+}
+
+a.ref,
+.has-ref {
+  cursor: pointer;
+  display: inline;
+}
+
+a.ref {
+  color: inherit;
+  display: none;
+  font-size: 1em;
+  left: 0;
+  opacity: .25;
+  position: absolute;
+  text-decoration: none;
+}
+
+.has-ref:hover > a.ref {
+  display: block;
+}
+
+.has-ref:target > a.ref {
+  display: block;
+  opacity: .5;
+}
+
+.has-ref {
+  margin-left: -1em;
+  padding-left: 1em;
+  position: relative;
+}
+
+.graphic {
+  height: 13em;
+  margin: 0 -1.5em;
+  overflow: hidden;
+  position: relative;
+}
+
+.graphic img {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.box,
+.type {
+  box-shadow: .3em .3em 0 rgba(0,0,0,.1);
+  border: 1px solid #ccc;
+}
+
+/* If you rather clip than squeeze the image, remove `height: 100%`. */
+.box {
+  clear: right;
+  color: #666;
+  float: right;
+  font-size: 1rem;
+  margin-left: 3rem;
+  padding: 1em;
+  width: 19em;
+  z-index: 2;
+  background-color: #f2fdff;
+  margin-bottom: 1em;
+}
+
+.box + .box {
+  margin-top: 2rem;
+}
+
+.box h2 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.box *:last-child {
+  margin-bottom: 0;
+}
+
+.image-paragraph-host {
+  margin-bottom: .75em;
+}
+
+.image-paragraph {
+  margin: 0;
+}
+
+.image-link {
+  display: block;
+}
+
+.image-link img {
+  max-width: 225px;
+  padding: 2.5vmin 0;
+  width: 100%;
+}
+
+.footer {
+  border-top: 1px solid #eee;
+  clear: both;
+  color: #777;
+  font-size: 1rem;
+  margin: 2rem 0;
+  padding-top: .5rem;
+}
+
+.menu {
+  background: #005a9c;
+  font-size: 1rem;
+  margin: 0 0 2em;
+}
+
+.menu,
+.menu ul,
+.menu li {
+  width: 100%;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li + li a {
+  border-left: 2px solid #fff;
+}
+
+.menu a {
+  color: #eee;
+  display: block;
+  font-size: .95rem;
+  height: 100%;
+  padding: .6rem;
+  text-align: center;
+  text-decoration: none;
+  transition: .05s background ease-in-out, .05s color ease-in-out;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+
+.menu a:active {
+  opacity: .75;
+}
+
+.menu a.active-tab {
+  background: #fff;
+  font-weight: bold;
+  border-top: solid thin #005a9c;
+  border-bottom: solid thin #005a9c;
+}
+
+.menu a:link:hover {
+  background: #111;
+  color: #fff;
+}
+
+ul {
+  list-style: square;
+  margin-left: 0;
+  padding-left: 1em;
+}
+
+blockquote {
+  margin-left: 1em;
+}
+
+.main {
+  margin-top: 3rem;
+}
+
+dd {
+  margin: 0 0 .6em;
+}
+
+dt {
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.main dt {
+  margin-top: 2rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  break-after: avoid;
+}
+
+.main h2 {
+  margin-top: 1.5em;
+}
+
+address {
+  line-height: .25em;
+}
+
+@media all and (min-width: 699px) {
+  html {
+    background: #005a9c;
+  }
+}
+
+@media all and (max-width: 860px) {
+  html {
+    padding: 0;
+  }
+
+  body {
+    border-radius: 0;
+  }
+
+  .menu ul {
+    display: block;
+  }
+
+  .menu li + li a {
+    border-top: 2px solid #fff;
+    border-left: 0;
+  }
+
+  .menu li + li a {
+    margin-left: 0;
+  }
+
+  .graphic {
+    height: 10em;
+    margin: 0;
+  }
+
+  /* The right-floating boxes become normal blocks. */
+  .box {
+    float: none;
+    margin-left: 0;
+    width: auto;
+  }
+}
+
+@page {
+  margin: 2cm;
+}
+
+@media print {
+  html {
+    background: none;
+    padding: 0;
+  }
+
+  body {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+/* Initialize footnote counters. */
+body {
+  counter-reset: footnote_counter footnote-ref_counter;
+}
+
+h2.footnote {
+  counter-increment: footnote_counter;
+}
+
+a.footnote-ref {
+  counter-increment: footnote-ref_counter;
+  text-decoration: none;
+}
+
+h2.footnote:before {
+  content: counter(footnote_counter);
+  display: block;
+  float: left;
+  font-size: .9em;
+  margin-right: 1.25ch;
+  padding: 2em 4em;
+  vertical-align: top;
+}
+
+h2.footnote:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+a.footnote-ref:after {
+  content: counter(footnote-ref_counter);
+  font-size: .6em;
+  margin-left: .25em;
+  vertical-align: super;
+}
+
+h2.footnote:before,
+a.footnote-ref:after {
+  background-color: #005a9c;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  padding: .1em .5em;
+}
+
+.schedule {
+  list-style: none;
+}
+
+.schedule li,
+summary .desc {
+  display: flex;
+}
+
+.schedule li + li {
+  margin-top: .5rem;
+}
+
+summary .time {
+  background-color: #005c9c;
+  border-radius: 5px 0 0 5px;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  min-width: 8em;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+summary .time,
+.title,
+.type {
+  padding: 3px 6px;
+}
+
+.break summary .time {
+  background-color: #666;
+  color: #fff;
+}
+
+.break .title {
+  color: gray;
+  font-style: italic;
+}
+
+summary .time span { font-size: 67%; }
+
+.type {
+  clear: right;
+  display: inline-block;
+  font-size: 67%;
+  font-weight: normal;
+  height: 100%;
+  margin: 0 13px 0 0;
+  order: -1;
+  min-width: 7.5em;
+  max-width: 7.5em;
+  overflow: hidden;
+  transform: rotate(5deg);
+}
+
+.type:empty {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+dt.type {
+  font-size: 100%;
+  margin: 0;
+}
+
+.type-lightning {
+  background-color: #ffe7ba;
+}
+
+.type-plenary {
+  background-color: #b9d3ee;
+}
+
+.type-breakout {
+  background-color: #c0d9af;
+}
+
+.type-panel {
+  background-color: #ffe4e1;
+}
+
+span.title {
+  display: block;
+  flex: 1;
+  margin-left: 5px;
+  order: 1;
+}
+
+div.talks > details {
+    border: 1px solid #ccc;
+    box-shadow: .3em .3em 0 rgba(0,0,0,.1);
+    margin-top: 20px;
+    padding: 1em;
+}
+div.talks details:nth-of-type(odd) {
+    background: #F2FDFF;
+}
+div.talks > details > summary div.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto auto;
+}
+
+div.talks > details > summary {
+    position: relative;
+  list-style: none;
+}
+
+div.talks > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+div.talks > details > summary div.grid:after {
+    content: 'more ►';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    color: gray;
+}
+
+div.talks > details[open] > summary div.grid:after {
+    content: 'less ▼';
+    cursor: pointer;
+}
+
+summary span:first-child, summary a:first-child {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    place-self: center;
+    color: gray;
+}
+summary a:nth-child(2) {
+    grid-column:2;
+    grid-row:1;
+}
+summary .summary {
+    grid-column: 2;
+    grid-row: 2;
+    padding-bottom: 2em;
+}
+summary a:nth-child(4) {
+    grid-row: 3;
+    grid-column:1 / -1;
+    text-align:right;
+    font-size:0.8em;
+}
+summary .summary span {
+    position: absolute;
+    bottom:0;
+    right:0;
+} 
+
+div.talks details[open] .summary, div.talks details[open] a:nth-child(4) {
+    display: none;
+}
+
+div.talks dt {
+  margin: 0;
+}
+
+div.talks dd {
+     margin: 0;
+     padding-left: 1rem;
+}
+
+div.talks dd + dd { font-style: italic;}
+
+div.talks dd + dt {
+  padding-top: 1rem;
+}
+
+.format {
+  margin-bottom: 2.25rem;
+}
+
+.format dt {
+  font-size: 1.1rem;
+  /*font-weight: 600;*/
+  margin: .5rem 0 1.25rem;
+  padding: .5rem 1rem;
+}
+
+.format dd {
+  margin: 0 1rem 1.5rem;
+}
+
+.sponsors-section {
+  margin-top: 1rem;
+}
+
+.sponsors-section :first-child {
+  margin-top: 0;
+}
+
+.sponsors-section :last-child {
+  margin-bottom: 0;
+}
+
+#notification {
+  background-color: #ff0;
+  border: 1px solid #ccc;
+  box-shadow: .2em .4em .5em #888;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 1em;
+  padding: .3em;
+  text-align: center;
+}
+
+.concluded {
+  text-decoration: line-through;
+}
+
+@media print {
+  h1 {
+    background: none;
+    color: #111;
+  }
+
+  nav, aside {
+    display: none;
+  }
+
+  body,
+  article {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
+
+  article {
+    page-break-before: always;
+  }
+
+  ul, img {
+    page-break-inside: avoid;
+  }
+
+  #dates {
+    display: none;
+  }
+}
+
+cite { font-weight: bold;}
+
+ol ol { margin: 1.5rem;}
+
+#proposed-topics {
+  list-style: none;
+}
+
+#proposed-topics > li > ul > li, #secondary-goals, .pc > li {
+  font-size: 1rem;
+  margin-left: .5rem;
+}
+
+#top > h2 {
+  background-color: #000;
+  opacity: .7;
+}
+
+label:before, label:after {
+  content: "\a";
+  white-space: pre;
+}
+
+input, textarea {
+  width: 100%;
+  font: .9em/1.1 Helvetica, Arial, Verdana, sans-serif;
+}
+
+button {
+  margin: 20px 0 0 0;
+  width: 100%;
+  height: 1.5rem;
+}
+
+img.tn {
+    display:inline;
+    vertical-align:middle;
+    padding-right:.5em;
+}
+
+div.related {
+	background-color: #C2CDCF;
+	border-radius: .6em;
+	padding: 0.5em;
+}
+div.related p {
+    margin-bottom: 0;
+}
+div.related ul {
+    margin-top: 0;
+    margin-left: 1em;
+}
+.simpletooltip a:link, .simpletooltip a:visited {
+    color: #acf;
+}
+details span.added {
+    top:-1em;
+    left: -1em;
+    padding: 0.2em;
+	position: absolute;
+	background-color: #ff0;
+	font-size: 0.8em;
+	transform: translate(-3em) rotate(-45deg);
+	transform-origin: top right;
+}
+.chat p {
+    font-family: monospace;
+}
+
+      /* Miscellaneous icons. Add something like class="picto im-info" to an
+	 element to prefix the element with the im-info icon from the
+	 iconmonstr-iconic font. */
+      .picto::before {font-family: iconmonstr-iconic-font;
+	font-size-adjust: 1.0; line-height: 0.6; font-style: normal;
+	display: inline-block; margin-right: 0.33em;
+	vertical-align: middle; text-indent: 0;
+	text-rendering: auto; -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale}
+      li.picto {list-style: none; padding-left: 0; margin-left: 0}
+      .button.picto, button.picto {padding-right: 4px}
+      .buttons button {font: inherit; font-weight: 700; cursor: pointer}
+      .buttons a:hover {color: white;}
+      .buttons > * {
+	background: #103852;
+	color: white;
+	font-weight: 700;
+	min-height: 2.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+      }
+      .buttons > * {
+	box-sizing: border-box;
+	float: left;
+	width: 48%;
+	border: none;
+	padding: 0.6rem;
+	width: calc(49.9% - 2rem);
+	margin: 0 2rem 2rem 0;
+	text-align: center;
+        min-height: 6.5em;
+	height: auto;
+        }
+      @media (min-width: 33em) {
+      .buttons > *, .badges > * {
+	width: 29.5;
+	width: calc(33.3% - 2rem);
+      }
+      }
+
+            div[data-fmt="pdf"] {width: 40.889em; height: 23em; /* Ratio 16:9 */
+	/* Add a border, because the slides are white: */
+	overflow: hidden; box-sizing: border-box; border: 1px solid;
+	display: block; margin: 0 0 1em 0; box-shadow: none}
+       div[data-fmt="pdf"] canvas {vertical-align: bottom}
+
+div[data-fmt="pdf"] .page { position: relative; }
+
+a.topic {
+    font-weight: bold;
+}
+
+a.talk:before {
+    content: "🎥";
+    vertical-align: middle;
+}
