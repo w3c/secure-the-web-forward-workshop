@@ -46,7 +46,7 @@ header #translations {
 
 #top {
         background-color: black;
-  background-image: url("");
+  background-image: url("hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 454px;
@@ -56,26 +56,29 @@ header #translations {
 
 #top.small {
     background-color: black;
-  background-image: url("");
+  background-image: url("hero-sm.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   min-height: 100px;
   position: relative;
 }
 
+#top hgroup p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 
-#top h1,
-#top h2 {
+#top hgroup * {
   padding: 1rem;
-  color: white;
+  color: #AAC9FC;
   text-shadow: 4px 4px 20px black;
 }
 
 @media all and (min-width: 787px) {
-  #top h1,
-  #top h2 {
+  #top hgroup {
     margin-left: 450px;
   }
+
 }
 
 #top.small h1 {
@@ -697,9 +700,9 @@ ol ol { margin: 1.5rem;}
   margin-left: .5rem;
 }
 
-#top > h2 {
+#top hgroup {
   background-color: #000;
-  opacity: .7;
+  opacity: .8;
 }
 
 label:before, label:after {
