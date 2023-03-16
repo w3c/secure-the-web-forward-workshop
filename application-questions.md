@@ -27,7 +27,8 @@ Do you have research to share, an implementation or prototype to demonstrate, or
 
 What do you view as the single biggest shortcoming or challenge of the security ecosystem for Web developers today?
 
-Position Statement
+# Position Statement
+
 Additionally, you are encouraged to submit a short position statement. Please submit your position paper at the latest by April 24, 2023, by:
   1. Adding it to the [https://github.com/w3c/secure-the-web-forward-workshop/tree/main/papers](https://github.com/w3c/secure-the-web-forward-workshop/tree/main/papers)  directory, and
   2. Opening a pull request at [https://github.com/w3c/secure-the-web-forward-workshop/pulls](https://github.com/w3c/secure-the-web-forward-workshop/pulls).
