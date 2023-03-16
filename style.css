@@ -689,7 +689,7 @@ div.talks dd + dt {
 
 cite { font-weight: bold;}
 
-ol ol { margin: 1.5rem;}
+ol { margin-left: 1.5rem;}
 
 #proposed-topics {
   list-style: none;
