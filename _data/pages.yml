@@ -1,7 +1,11 @@
 pages:
 - title: Workshop Overview
   url: index.html
+  url_zh: index-zh.html
+  title_zh: 研讨会主页
 - title: Participation
   url: cfp.html
+  url_zh: cfp-zh.html
+  title_zh: 申请参会
 - title: Sponsorship
   url: sponsorship.html
