@@ -29,7 +29,7 @@ What do you view as the single biggest shortcoming or challenge of the security 
 
 # Position Statement
 
-Additionally, you are encouraged to submit a short position statement. Please submit your position paper at the latest by April 24, 2023, by:
+Additionally, you are encouraged to submit a short position statement. Please submit your position paper at the latest by May 2nd, 2023, by:
   1. Adding it to the [https://github.com/w3c/secure-the-web-forward-workshop/tree/main/papers](https://github.com/w3c/secure-the-web-forward-workshop/tree/main/papers)  directory, and
   2. Opening a pull request at [https://github.com/w3c/secure-the-web-forward-workshop/pulls](https://github.com/w3c/secure-the-web-forward-workshop/pulls).
 
