@@ -8,17 +8,15 @@ layout: subpage
 
 Please answer the questions below and email your answers to [group-secure-the-web-forward-ws@w3.org](mailto:group-secure-the-web-forward-ws@w3.org).
 
-Applying to the workshop does not guarantee an invitation. Invitations will be sent on or about [TBD]. You are encouraged to delay making non-refundable travel plans until then.
+Invitations to the virtual sessions (scheduled on September 26-28, 2023) will be sent about mid-September.
 
-# Application questions
+# Registration info
 
 - Name
 - Email address
 - Affiliation
-- Which days would you like to attend? (Select all that apply)
-  - [TBD]
-- Do you plan to attend remotely or in person?
-  - If you are attending remotely, which timezone will you be attending from?
+- Do you have any accessibility requirements?
+
 
 ## Subject matter questions
 
@@ -28,14 +26,9 @@ What do you view as the single biggest shortcoming or challenge of the security 
 
 # Position Statement
 
-Additionally, you are encouraged to submit a short position statement. Please submit your position paper at the latest by [TBD], by:
+Additionally, you are encouraged to submit a short position statement. Please submit your position paper at the latest by July 28, 2023, by:
   1. Adding it to the [https://github.com/w3c/secure-the-web-forward-workshop/tree/main/papers](https://github.com/w3c/secure-the-web-forward-workshop/tree/main/papers)  directory, and
   2. Opening a pull request at [https://github.com/w3c/secure-the-web-forward-workshop/pulls](https://github.com/w3c/secure-the-web-forward-workshop/pulls).
 
 Alternatively, you can email your statement to the program committee at [group-secure-the-web-forward-ws@w3.org](mailto:group-secure-the-web-forward-ws@w3.org). More information can be found on our website. 
-
-## Logistics
-
-- Do you have any accessibility requirements?
-- Do you have any food allergies / preferences?
 
