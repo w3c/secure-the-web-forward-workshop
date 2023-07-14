@@ -39,9 +39,9 @@ I currently lead the research and work around realms security in MetaMask, and w
 
 ### Read
 
-* Long term research of realms security https://github.com/weizman/awesome-javascript-realms-security
-* GitHub repo of Snow, the solution we are working on to deal with the problem https://github.com/lavamoat/snow
+* [Long term research of realms security](https://github.com/weizman/awesome-javascript-realms-security)
+* [GitHub repo of Snow](https://github.com/lavamoat/snow), the solution we are working on to deal with the problem
 
 ### Watch
 
-* OWASP AppSec talk about realms security and Snow https://www.youtube.com/watch?v=l2l_qnEhx3M
+* [OWASP AppSec talk about realms security and Snow](https://www.youtube.com/watch?v=l2l_qnEhx3M)
