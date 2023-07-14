@@ -22,7 +22,7 @@ This effectively eliminates such protections almost completely.
 
 ## Solution (WIP)
 
-We currntly are working on the most advanced solution to this problem by trying to provide an easy way to handle creation of new realms in runtime before attackers gain access to those.
+We are currently working on the most advanced solution to this problem by trying to provide an easy way to handle creation of new realms in runtime before attackers gain access to those.
 
 However, implementing such a solution in JS comes with many difficulties and issues, which could have been easier to address natively by the browser.
 
