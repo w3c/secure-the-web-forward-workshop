@@ -9,7 +9,7 @@ For example, if a malicious code manages to execute within the browser of the vi
 
 ## Problem
 
-however, thanks to JavaScript realms, an attacker can ignore such protection quite easily by simply create a new JavaScript realm and access such sensitive APIs via the new realm's unique set of APIs:
+However, thanks to JavaScript realms, an attacker can ignore such protection quite easily by simply creating a new JavaScript realm and accessing such sensitive APIs via the new realm's unique set of APIs:
 
 ```javascript
 // will fail if the localStorage API is hooked into by a security tool
