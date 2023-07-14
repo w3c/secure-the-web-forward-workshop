@@ -1,5 +1,10 @@
 # Applying Hardened Javascript to supply chain security for a proactive approach
 
+By [Zbyszek Tenerowicz](#author).
+
+
+## Description
+
 The problem of supply chain security for the Web is currently being addressed by building up databases of known issues and improving the pace at which research and testing results are delivered to web developers. The approach has been successful in improving the security of popular open source software. The friction introduced by false-positives and its impact on security postures in the community is yet to be addressed.
 
 This approach depends on security researchers, increasingly aided by AI, discovering vulnerabilities and malicious packages. It constitutes an arms race, while the growth in malicious packages for the web ecosystem is clearly superlinear.
@@ -22,9 +27,6 @@ While using `Compartment` to isolate dependencies and control what they access i
 
 I wish to present on the topic above and open a conversation about supporting the proactive approach to supply chain security in the Web platform.
 
-## Author's background
-
-I've been involved in Open Source and Web development. I spent 7 years leading a team building and maintaining ultimately over 30 web applications in production. Over that period I've been putting increased attention towards security and building up awareness of the needs of development teams in security context, built [npm-audit-resolver](https://github.com/naugtur/npm-audit-resolver) and ultimately joined the LavaMoat team where I'm working on tooling to apply Hardened Javascript to the problem of supply chain security.
 
 ## Links to related supporting resources
 
@@ -37,3 +39,8 @@ I've been involved in Open Source and Web development. I spent 7 years leading a
 
 - Mark Miller on Hardened Javascript https://www.youtube.com/watch?v=u-XETUbxNUU
 - My presentation on the topic at NodeConfEU https://www.youtube.com/watch?v=Qjeh7Qo2u28
+
+
+## Author
+
+Zbyszek Tenerowicz has been involved in Open Source and Web development and spent 7 years leading a team building and maintaining ultimately over 30 web applications in production. Over that period, Zbyszek has been putting increased attention towards security and building up awareness of the needs of development teams in security context, built [npm-audit-resolver](https://github.com/naugtur/npm-audit-resolver) and ultimately joined the LavaMoat team where he's working on tooling to apply Hardened Javascript to the problem of supply chain security.

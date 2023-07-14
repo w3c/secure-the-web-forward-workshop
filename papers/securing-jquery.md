@@ -1,5 +1,10 @@
 # Can securing jQuery help secure the Web forward?
 
+By [Tobie Langel](#author).
+
+
+## Description
+
 Open source security has increasingly become a top concern due to numerous high-profile and high-impact vulnerabilities affecting critical open source projects that underpin the internet's infrastructure. Over the years, various industry efforts have aimed to address this issue, with a renewed sense of urgency emerging recently. The White House and the EU Commission have taken notice, and legislative efforts are underway across multiple jurisdictions. Open source security is now increasingly framed as a software supply chain issue.
 
 In this context, the OpenSSF has launched an ambitious new project called Alpha-Omega. Most of the open source projects identified by Alpha-Omega fit well within the activity streams defined by the OpenSSF's Open Source Software Security Mobilization Plan. they are, after all, the infrastructure building blocks that this initiative was designed to harden.
@@ -41,3 +46,8 @@ Once again--and against all odds--jQuery can be a trailblazer and help move the 
 * The New Stack article: [Why Outdated jQuery Is Still the Dominant JavaScript Library](https://thenewstack.io/why-outdated-jquery-is-still-the-dominant-javascript-library/)
 * [Alpha-Omega - Open Source Security Foundation](https://openssf.org/community/alpha-omega/)
 * [The Open Source Software Security Mobilization Plan](https://openssf.org/oss-security-mobilization-plan/) ([PDF](https://8112310.fs1.hubspotusercontent-na1.net/hubfs/8112310/OpenSSF/OSS%20Mobilization%20Plan.pdf))
+
+
+## Author
+
+Tobie Langel is a world-leading expert and international speaker on open source and standardization. He advises some of the biggest names in tech (Google, Microsoft, Mozilla, Intel, Cisco), promising startups (GitLab, Airtable, Coil), industry organizations (OpenJS Foundation, OASIS, W3C) and nonprofits (Organization for Ethical Source, Ushahidi, Omidyar Network), either pro bono or through his consultancy, UnlockOpen.
