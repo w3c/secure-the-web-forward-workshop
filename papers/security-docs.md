@@ -4,7 +4,7 @@ By [Florian Scholz](#author).
 
 ## Description
 
-The WebDX group ran a short survey on MDN to identify the most challenging security aspects that web devs need to face today. (297 responses)
+The WebDX community group ran a short survey on MDN to [identify the most challenging security aspects that web devs need to face today](https://github.com/web-platform-dx/developer-research/blob/main/mdn-short-surveys/2023-05-15-security-dx/interpretation.md). (297 responses)
 
 At least two aspects of this survey suggest that better education is needed:
 
