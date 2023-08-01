@@ -28,6 +28,6 @@ Currently, on MDN, web security is documented on the [Web/Security page](https:/
 
 ## Author
 
-Open Web Docs (OWD) is a non-profit collective funded by corporate and individual donations. More information is available at [https://openwebdocs.org](https://openwebdocs.org).
+Open Web Docs (OWD) is a non-profit collective funded by corporate and individual donations. More information is available on the [Open Web Docs](https://openwebdocs.org) web site.
 
 Florian Scholz is a Technical Writer at Open Web Docs. Email: [florian@openwebdocs.org](mailto:florian@openwebdocs.org).
