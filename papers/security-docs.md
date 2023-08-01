@@ -17,7 +17,7 @@ Given the survey results, and with the help of subject matter experts, we want t
 
 To achieve this we want to use Divio’s documentation system to make the docs better. It requires four different types of documentation to be created: Tutorials (learning-oriented), How-Tos (problem-oriented), Guides (understanding-oriented), Reference (information-oriented).
 
-Currently, on MDN, web security is documented on the Web/Security page with a few subpages. We would like to bring structure into this documentation area and fill gaps.
+Currently, on MDN, web security is documented on the [Web/Security page](https://developer.mozilla.org/en-US/docs/Web/Security) with a few subpages. We would like to bring structure into this documentation area and fill gaps.
 
 
 ## Resources
