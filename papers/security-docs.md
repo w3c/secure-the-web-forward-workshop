@@ -22,8 +22,8 @@ Currently, on MDN, web security is documented on the Web/Security page with a fe
 
 ## Resources
 
-* [https://developer.mozilla.org/en-US/docs/Web/Security](https://developer.mozilla.org/en-US/docs/Web/Security) 
-* [https://documentation.divio.com/](https://documentation.divio.com/)
+* [MDN Web Docs - Security on the Web](https://developer.mozilla.org/en-US/docs/Web/Security) 
+* [DIVIO - The documentation system](https://documentation.divio.com/)
 
 
 ## Author
