@@ -1,5 +1,7 @@
 # Documentation for web security education
 
+By [Florian Scholz](#author).
+
 ## Description
 
 The WebDX group ran a short survey on MDN to identify the most challenging security aspects that web devs need to face today. (297 responses)
