@@ -30,15 +30,15 @@ I wish to present on the topic above and open a conversation about supporting th
 
 ## Links to related supporting resources
 
-- TC39 Compartments proposal https://github.com/tc39/proposal-compartments
-- SES shim - a userspace implementation of Compartments and lockdown https://github.com/endojs/endo/tree/master/packages/ses
-- LavaMoat - an opensource tool for using SES shim to deliver runtime protections against supply chain attacks https://github.com/LavaMoat/LavaMoat
-- Gal Weizman on addressing the Realm issue in LavaMoat https://weizman.github.io/page-what-is-a-realm-in-js/
+- [TC39 Compartments proposal](https://github.com/tc39/proposal-compartments)
+- [SES shim](https://github.com/endojs/endo/tree/master/packages/ses) - a userspace implementation of Compartments and lockdown
+- [LavaMoat](https://github.com/LavaMoat/LavaMoat) - an opensource tool for using SES shim to deliver runtime protections against supply chain attacks
+- [Gal Weizman on addressing the Realm issue in LavaMoat](https://weizman.github.io/page-what-is-a-realm-in-js/)
 
 ### Video resources
 
-- Mark Miller on Hardened Javascript https://www.youtube.com/watch?v=u-XETUbxNUU
-- My presentation on the topic at NodeConfEU https://www.youtube.com/watch?v=Qjeh7Qo2u28
+- [Mark Miller on Hardened Javascript](https://www.youtube.com/watch?v=u-XETUbxNUU)
+- [Zbyszek Tenerowicz on Hardened Javascript at NodeConfEU](https://www.youtube.com/watch?v=Qjeh7Qo2u28)
 
 
 ## Author
