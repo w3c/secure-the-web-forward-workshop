@@ -7,5 +7,7 @@ pages:
   url: cfp.html
   url_zh: cfp-zh.html
   title_zh: 申请参会
+- title: Position papers
+  url: papers.html
 - title: Sponsorship
   url: sponsorship.html

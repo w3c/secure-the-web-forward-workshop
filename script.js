@@ -28,5 +28,73 @@
             });
             el.insertBefore(a, el.firstChild);
         });
+
+        const toggle = document.querySelector('[data-action=toggle]');
+        const toggling = {};
+        if (toggle) {
+            const button = document.createElement('button');
+            button.innerHTML = 'Expand position statements ▶';
+            button.setAttribute('data-action', 'expand');
+            toggle.appendChild(button);
+
+            button.addEventListener('click', _ => {
+                if (button.getAttribute('data-action') === 'expand') {
+                    button.setAttribute('data-action', 'collapse');
+                    button.innerHTML = 'Collapse position statements ▼';
+                    [...document.querySelectorAll('details.paper')].forEach(paper => {
+                        toggling[paper.id] = true;
+                        if (!paper.hasAttribute('open')) {
+                            paper.setAttribute('open', '');
+                        }
+                    });
+                }
+                else {
+                    button.setAttribute('data-action', 'expand');
+                    button.innerHTML = 'Expand position statements ▶';
+                    [...document.querySelectorAll('details.paper')].forEach(paper => {
+                        toggling[paper.id] = true;
+                        if (paper.hasAttribute('open')) {
+                            paper.removeAttribute('open');
+                        }
+                    });
+                }
+            });
+        }
+
+        for (const paper of [...document.querySelectorAll('details.paper')]) {
+            paper.addEventListener('toggle', _ => {
+              if (paper.open && !toggling[paper.id]) {
+                window.location.hash = '#' + paper.id;
+              }
+              toggling[paper.id] = false;
+            });
+        }
+
+        const hash = window.location.hash;
+        if (hash) {
+            const hashDetails = document.querySelector(`details${hash}`);
+            if (hashDetails) {
+                if (!hashDetails.hasAttribute('open')) {
+                    hashDetails.setAttribute('open', '');
+                }
+            }
+            else {
+                const pos = hash.lastIndexOf('-');
+                const prefix = pos > 0 ? hash.substring(0, pos) : hash;
+                const el = document.querySelector(`details${prefix}`);
+                if (el) {
+                    if (!el.hasAttribute('open')) {
+                        toggling[el.id] = true;
+                        el.setAttribute('open', '');
+                    }
+                    if (el && hash !== prefix) {
+                        const hashEl = document.querySelector(hash);
+                        if (hashEl) {
+                            hashEl.scrollIntoView();
+                        }
+                    }
+                }
+            }
+        }
     });
 })();
