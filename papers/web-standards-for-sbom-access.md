@@ -14,7 +14,7 @@ to extend the Manufacturers Usage Description ([RFC 8520](https://tools.ietf.org
 Although this proposal is focused on devices at the end of the supply chain, aspects of the model and approach could be leveraged for 
 more general SBOM discovery scenarios.
 
-For the SBOM vocabulary, the SPDX standard had defined terms for supporting use cases involving SBOMs as well as many other supply chain relevant use cases.
+For the SBOM vocabulary, the SPDX standard defines terms for supporting use cases involving SBOMs as well as many other supply chain relevant use cases.
 
 The SPDX standard is a formal ISO standard ([ISO/IEC 5962:2021](https://www.iso.org/standard/81870.html)) as well as an 
 [RDF ontology](https://spdx.org/rdf/terms/) described in the [W3C OWL Ontology language](https://www.w3.org/OWL/).
