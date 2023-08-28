@@ -30,7 +30,7 @@ the adoption of internet accessible SBOM data and improve overall software suppl
 
 
 ## Links
-- [IETF draft proposel for SBOM Access](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sbom-access)
+- [IETF draft proposal for SBOM Access](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sbom-access)
 - [SPDX general information website](https://spdx.dev/)
 - [SPDX Standard ISO/IEC 5962:2021](https://www.iso.org/standard/81870.html)
 - [SPDX RDF ontology web pages](https://spdx.org/rdf/terms/)
