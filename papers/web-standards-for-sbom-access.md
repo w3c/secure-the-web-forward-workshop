@@ -16,7 +16,7 @@ more general SBOM discovery scenarios.
 
 For the SBOM vocabulary, the SPDX standard had defined terms for supporting use cases involving SBOMs as well as many other supply chain relevant use cases.
 
-The SPDX standard is a formal ISO standard ([ISO/IEC 5962:2021](https://www.iso.org/standard/81870.html)) as well an 
+The SPDX standard is a formal ISO standard ([ISO/IEC 5962:2021](https://www.iso.org/standard/81870.html)) as well as an 
 [RDF ontology](https://spdx.org/rdf/terms/) described in the [W3C OWL Ontology language](https://www.w3.org/OWL/).
 The standard is also freely available as a [JSON schema](https://github.com/spdx/spdx-spec/blob/master/schemas/spdx-schema.json)
 and more [human readable web pages](https://spdx.github.io/spdx-spec/v2.3/).
