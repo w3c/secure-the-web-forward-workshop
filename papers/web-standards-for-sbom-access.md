@@ -9,7 +9,7 @@ various software build and deployment systems thereby improving overall software
 
 Although this is a very ambitious goal, there is already a lot of standardization we can leverage for this purpose.
 
-There is an existing [IETF draft proposel](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sbom-access)
+There is an existing [IETF draft proposal](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sbom-access)
 to extend the Manufacturers Usage Description ([RFC 8520](https://tools.ietf.org/html/rfc8520)) to discover and retrieve SBOM information.
 Although this proposal is focused on devices at the end of the supply chain, aspects of the model and approach could be leveraged for 
 more general SBOM discovery scenarios.
