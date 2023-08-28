@@ -332,6 +332,45 @@ layout: subpage
         </section>
       </details>
 
+      <!-- papers/web-standards-for-sbom-access.md -->
+      <details id="sbom-standards" class="paper">
+        <summary>
+          <div>
+            <div>
+              <h4>Establish Standards to Support Web Access to SBOM Data</h4>
+              <span>by Gary O'Neall.</span>
+            </div>
+          </div>
+        </summary>
+        <section id="sbom-standards-desc">
+          <h5>Description</h5>
+          <p>Establishing a common vocabulary and protocol for accessing SBOM information over the public internet would ease integration into various software build and deployment systems thereby improving overall software supply chain security.</p>
+          <p>Although this is a very ambitious goal, there is already a lot of standardization we can leverage for this purpose.</p>
+          <p>There is an existing <a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sbom-access">IETF draft proposal</a> to extend the Manufacturers Usage Description (<a href="https://tools.ietf.org/html/rfc8520">RFC 8520</a>) to discover and retrieve SBOM information. Although this proposal is focused on devices at the end of the supply chain, aspects of the model and approach could be leveraged for more general SBOM discovery scenarios.</p>
+          <p>For the SBOM vocabulary, the SPDX standard defines terms for supporting use cases involving SBOMs as well as many other supply chain relevant use cases.</p>
+          <p>The SPDX standard is a formal ISO standard (<a href="https://www.iso.org/standard/81870.html">ISO/IEC 5962:2021</a>) as well as an <a href="https://spdx.org/rdf/terms/">RDF ontology</a> described in the <a href="https://www.w3.org/OWL/">W3C OWL Ontology language</a>. The standard is also freely available as a <a href="https://github.com/spdx/spdx-spec/blob/master/schemas/spdx-schema.json">JSON schema</a> and more <a href="https://spdx.github.io/spdx-spec/v2.3/">human readable web pages</a>.</p>
+          <p>SPDX is supported and maintained by a large group of contributors representing tooling providers, SBOM producers and SBOM consumers.</p>
+          <p>The upcoming SPDX 3.0 has some very specific enhancements for making the SBOM information more web accessible.</p>
+          <p>Leveraging an existing well-defined vocabulary that supports standards ranging from JSON Schemas to full RDF Ontologies can accelerate the adoption of internet accessible SBOM data and improve overall software supply chain security.</p>
+        </section>
+        <section id="sbom-standards-links">
+          <h5>Links to related supporting resources</h5>
+          <ul>
+            <li><a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sbom-access">IETF draft proposal for SBOM Access</a></li>
+            <li><a href="https://spdx.dev/">SPDX general information website</a></li>
+            <li><a href="https://www.iso.org/standard/81870.html">SPDX Standard ISO/IEC 5962:2021</a></li>
+            <li><a href="https://spdx.org/rdf/terms/">SPDX RDF ontology web pages</a></li>
+            <li><a href="https://github.com/spdx/spdx-spec/blob/master/ontology/spdx-ontology.owl.ttl">RDF ontology OWL</a></li>
+            <li><a href="https://github.com/spdx/spdx-spec/blob/master/ontology/SPDX-2.3-simplified.png">SPDX 2.3 Model Class Diagram</a></li>
+            <li><a href="https://github.com/spdx/spdx-3-model">SPDX 3.0 Model Repository</a></li>
+            </ul>
+        </section>
+        <section id="hardened-supply-chain-author">
+          <h5>Author</h5>
+          <p>Gary is a co-lead of the technical workgroup for the Software Package Data Exchange® (SPDX™) - an open standard for communicating software bill of material information, including components, licenses, copyrights, and security references. Gary has contributed several open-source tools including the <a href="https://spdx.dev/spdx-tools/">SPDX Java Libraries and Tools</a>. Gary O’Neall is responsible for product development and technology for Source Auditor Inc., a software and service company helping software companies manage the technical and legal risks of open-source software.</p>
+        </section>
+      </details>
+
       <!-- papers/applying-hardened-javascript-to-supply-chain-security.md -->
       <details id="hardened-supply-chain" class="paper">
         <summary>
