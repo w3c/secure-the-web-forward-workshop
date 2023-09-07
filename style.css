@@ -929,3 +929,8 @@ a.talk:before {
 .note ul {
   margin-bottom: 0;
 }
+
+ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}

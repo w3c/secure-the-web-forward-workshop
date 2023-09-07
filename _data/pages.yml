@@ -9,5 +9,7 @@ pages:
   title_zh: 申请参会
 - title: Position papers
   url: papers.html
+- title: Live sessions
+  url: agenda.html
 - title: Sponsorship
   url: sponsorship.html

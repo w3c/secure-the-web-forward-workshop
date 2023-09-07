@@ -1,6 +1,6 @@
 # Roadmap planning for a JavaScript security framework
 
-By [Joe Sepi and Robin Ginn](#authors).
+By [Joe Sepi, Robin Ginn, Ben Sternthal](#authors).
 
 ## Description
 
@@ -33,4 +33,4 @@ The foundation’s [hosted projects](https://openjsf.org/projects/) have a signi
 
 ## Authors
 
-Joe Sepi is Chair of the OpenJS Cross Project Council (CPC), and Chair of the OpenJS Security Collaboration Space. Robin Ginn is an Executive Director of the OpenJS Foundation.
+Joe Sepi is Chair of the OpenJS Cross Project Council (CPC), and Chair of the OpenJS Security Collaboration Space. Robin Ginn is an Executive Director of the OpenJS Foundation. Ben Sternthal is the OpenJS Program Director.
