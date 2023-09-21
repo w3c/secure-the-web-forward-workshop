@@ -152,6 +152,127 @@ layout: subpage
     <section id="js-security" class="papers">
       <h3>JavaScript Security</h3>
 
+      <!-- papers/javascript-realms.md -->
+      <details id="realms" class="paper">
+        <summary>
+          <div>
+            <div>
+              <h4>JavaScript realms are used to bypass and eliminate many existing web apps security tools span A problem with a WIP solution</h4>
+              <span>by Gal Weizman.</span>
+            </div>
+          </div>
+        </summary>
+        <section id="realms-desc">
+          <h5>Description</h5>
+          <h6>Introduction</h6>
+          <p>There are many security tools that try to defend web apps in runtime in the browser by redefining and protecting built in JavaScript APIs.
+          The need for such tools grows with the difficulty in securing web apps supply chains which results in having a hard time detecting changes in the supply chain that might cause harm in the victim's browser.</p>
+          <p>For example, if a malicious code manages to execute within the browser of the victim, it can try accessing some secrets stored by the app in the <code>localStorage</code> - therefore we have different security tools which attempt to better control access to such sensitive APIs by redefining their behaviour to be more selective on which code is allowed to access it and which code isn't.</p>
+          <h6>Problem</h6>
+          <p>However, thanks to JavaScript realms, an attacker can ignore such protection quite easily by simply creating a new JavaScript realm and accessing such sensitive APIs via the new realm's unique set of APIs:</p>
+          <div class="highlight highlight-source-js notranslate position-relative overflow-auto">
+            <pre><span class="pl-c">// will fail if the localStorage API is hooked into by a security tool</span>
+<span class="pl-k">const</span> <span class="pl-s1">stolenSecret</span> <span class="pl-c1">=</span> <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-c1">secret</span><span class="pl-kos">;</span>
+<span class="pl-c">// bypass security tool easily - access the sensitive API via a new realm</span>
+<span class="pl-k">const</span> <span class="pl-s1">stolenSecret</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'iframe'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">contentWindow</span><span class="pl-kos">.</span><span class="pl-c1">localStorage</span><span class="pl-kos">.</span><span class="pl-c1">secret</span></pre>
+          </div>
+          <p>This effectively eliminates such protections almost completely.</p>
+          <h6>Solution (WIP)</h6>
+          <p>We are currently working on the most advanced solution to this problem by trying to provide an easy way to handle creation of new realms in runtime before attackers gain access to those.</p>
+          <p>However, implementing such a solution in JS comes with many difficulties and issues, which could have been easier to address natively by the browser.</p>
+          <h6>Goal</h6>
+          <p>I wish to bring up this issue and the possible approaches to it in order to discuss and explore them.</p>
+        </section>
+        <section id="realms-links">
+          <h5>Links to related supporting resources</h5>
+          <h6>Read</h6>
+          <ul>
+            <li><a href="https://github.com/weizman/awesome-javascript-realms-security">Long term research of realms security</a></li>
+            <li><a href="https://github.com/lavamoat/snow">GitHub repo of Snow</a>, a proposed solution to deal with the problem</li>
+          </ul>
+          <h6>Watch</h6>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=l2l_qnEhx3M">OWASP AppSec talk about realms security and Snow</a></li>
+          </ul>
+        </section>
+        <section id="realms-author">
+          <h5>Author</h5>
+          <p>Gal Weizman has been working on browser JavaScript runtime security specifically for supply chain security for the past 5 years, focusing mostly on realms security research. In general, most of Gal's work so far was about browser JavaScript security in all sorts of aspects.</p>
+          <p>Gal Weizman currently leads the research and work around realms security in MetaMask, and works on Snow being an open source WIP solution for this problem.</p>
+        </section>
+      </details>
+
+      <!-- papers/security-model-for-cookies.md -->
+      <details id="cookies" class="paper">
+        <summary>
+          <div>
+            <div>
+              <h4>Establishing a robust long-term security model for cookies on the web</h4>
+              <span>by Artur Janc.</span>
+            </div>
+          </div>
+        </summary>
+        <section id="cookies-desc">
+          <h5>Description</h5>
+          <p>Browser vendors' efforts to disable third-party cookies are motivated
+          primarily by privacy / anti-tracking considerations, but they have a
+          significant - and generally underappreciated - impact on the overall
+          security of the web platform. The presence of third-party cookies is the
+          root cause of multiple classes of vulnerabilities in web applications, such
+          as Cross-Site Request Forgery (CSRF), clickjacking and numerous cross-site
+          leaks; consequently, blocking the sending of cookies on cross-site requests
+          would provide web applications with substantial isolation benefits.</p>
+          <p>However, the anti-tracking focus of third-party cookie blocking efforts
+          carries a risk of leading to implementations which won't reliably protect
+          websites from cross-site attacks. For example, establishing the top-level
+          site as the boundary for sending third-party cookies (the current
+          implementation in multiple browsers) risks allowing untrusted embedded
+          content, such as ads, to send credentialed requests to endpoints hosted by
+          the top-level site and continue to exploit cross-site vulnerabilities.</p>
+          <p>Similarly, mechanisms meant to restore functionality limited by the
+          deprecation of third-party cookies, such as the
+          <a href="https://privacycg.github.io/storage-access/">Storage Access API</a>,
+          <a href="https://github.com/privacycg/CHIPS">Cookies Having Independent Partitioned State</a> (CHIPS),
+          <a href="https://fedidcg.github.io/FedCM/">Federated Credential Management API</a> (FedCM),
+          as well as various features to re-enable third-party cookies on a
+          per-site basis, need to grapple with the same scoping rules. The risk of
+          being overly permissive (for example, creating convenient mechanisms to
+          fully re-enable third-party cookies for a given site) is that it will
+          permit web-based attackers to bypass built-in isolation defenses. This is
+          particularly concerning in the long run: if the web is safe by default from
+          cross-site vulnerabilities, developers will pay less attention to
+          implementing application mitigations (such as the use of CSRF tokens or
+          <code>X-Frame-Options</code> headers). As a result, attackers who can regain access to
+          third-party cookies on their sites will be able to exploit gaps in
+          isolation on a large fraction of the web.</p>
+          <p>This session is meant to discuss the cookie model that we're aiming for
+          from a security perspective, including a review of the potential security
+          benefits of reliable third-party cookie blocking. It also aims to identify
+          specific hardening opportunities for browsers' third-party cookie blocking
+          logic to help browser vendors improve their implementations.</p>
+        </section>
+        <section id="cookies-links">
+          <h5>Links</h5>
+          <ul>
+            <li><a href="https://docs.google.com/document/d/1AsrETl-7XvnZNbG81Zy9BcZfKbqACQYBSrjM3VsIpjY/edit#">Improving the Storage Access API security model</a></li>
+            <li><a href="https://github.com/privacycg/storage-access/issues/113" data-hovercard-type="issue" data-hovercard-url="/privacycg/storage-access/issues/113/hovercard">Issue raised on the Storage Access API security model</a></li>
+            <li><a href="https://github.com/DCtheTall/standardizing-cross-site-cookie-semantics">Standardizing Security Semantics of Cross-Site Cookies</a></li>
+            <li><a href="https://secweb.work/2023.html">Keynote by Artur Janc on (Re-)Designing the web's cookie model with security in mind</a> - SecWeb Workshop - May 2023</li>
+          </ul>
+        </section>
+        <section id="cookies-author">
+          <h5>Author</h5>
+          <p>Artur Janc is the Team Leader for web security on Google's Information Security
+          Engineering team, focusing on the adoption of security features across the
+          Google web ecosystem as well as broader security and privacy improvements to
+          the web platform.</p>
+        </section>
+      </details>
+    </section>
+
+    <section id="awareness" class="papers">
+      <h3>Developer Awareness</h3>
+
       <!-- papers/securing-jquery.md -->
       <details id="jquery" class="paper">
         <summary>
@@ -207,60 +328,6 @@ layout: subpage
           <p>Tobie Langel is a world-leading expert and international speaker on open source and standardization. He advises some of the biggest names in tech (Google, Microsoft, Mozilla, Intel, Cisco), promising startups (GitLab, Airtable, Coil), industry organizations (OpenJS Foundation, OASIS, W3C) and nonprofits (Organization for Ethical Source, Ushahidi, Omidyar Network), either pro bono or through his consultancy, UnlockOpen.</p>
         </section>
       </details>
-
-      <!-- papers/javascript-realms.md -->
-      <details id="realms" class="paper">
-        <summary>
-          <div>
-            <div>
-              <h4>JavaScript realms are used to bypass and eliminate many existing web apps security tools span A problem with a WIP solution</h4>
-              <span>by Gal Weizman.</span>
-            </div>
-          </div>
-        </summary>
-        <section id="realms-desc">
-          <h5>Description</h5>
-          <h6>Introduction</h6>
-          <p>There are many security tools that try to defend web apps in runtime in the browser by redefining and protecting built in JavaScript APIs.
-          The need for such tools grows with the difficulty in securing web apps supply chains which results in having a hard time detecting changes in the supply chain that might cause harm in the victim's browser.</p>
-          <p>For example, if a malicious code manages to execute within the browser of the victim, it can try accessing some secrets stored by the app in the <code>localStorage</code> - therefore we have different security tools which attempt to better control access to such sensitive APIs by redefining their behaviour to be more selective on which code is allowed to access it and which code isn't.</p>
-          <h6>Problem</h6>
-          <p>However, thanks to JavaScript realms, an attacker can ignore such protection quite easily by simply creating a new JavaScript realm and accessing such sensitive APIs via the new realm's unique set of APIs:</p>
-          <div class="highlight highlight-source-js notranslate position-relative overflow-auto">
-            <pre><span class="pl-c">// will fail if the localStorage API is hooked into by a security tool</span>
-<span class="pl-k">const</span> <span class="pl-s1">stolenSecret</span> <span class="pl-c1">=</span> <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-c1">secret</span><span class="pl-kos">;</span>
-<span class="pl-c">// bypass security tool easily - access the sensitive API via a new realm</span>
-<span class="pl-k">const</span> <span class="pl-s1">stolenSecret</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'iframe'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">contentWindow</span><span class="pl-kos">.</span><span class="pl-c1">localStorage</span><span class="pl-kos">.</span><span class="pl-c1">secret</span></pre>
-          </div>
-          <p>This effectively eliminates such protections almost completely.</p>
-          <h6>Solution (WIP)</h6>
-          <p>We are currently working on the most advanced solution to this problem by trying to provide an easy way to handle creation of new realms in runtime before attackers gain access to those.</p>
-          <p>However, implementing such a solution in JS comes with many difficulties and issues, which could have been easier to address natively by the browser.</p>
-          <h6>Goal</h6>
-          <p>I wish to bring up this issue and the possible approaches to it in order to discuss and explore them.</p>
-        </section>
-        <section id="realms-links">
-          <h5>Links to related supporting resources</h5>
-          <h6>Read</h6>
-          <ul>
-            <li><a href="https://github.com/weizman/awesome-javascript-realms-security">Long term research of realms security</a></li>
-            <li><a href="https://github.com/lavamoat/snow">GitHub repo of Snow</a>, a proposed solution to deal with the problem</li>
-          </ul>
-          <h6>Watch</h6>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=l2l_qnEhx3M">OWASP AppSec talk about realms security and Snow</a></li>
-          </ul>
-        </section>
-        <section id="realms-author">
-          <h5>Author</h5>
-          <p>Gal Weizman has been working on browser JavaScript runtime security specifically for supply chain security for the past 5 years, focusing mostly on realms security research. In general, most of Gal's work so far was about browser JavaScript security in all sorts of aspects.</p>
-          <p>Gal Weizman currently leads the research and work around realms security in MetaMask, and works on Snow being an open source WIP solution for this problem.</p>
-        </section>
-      </details>
-    </section>
-
-    <section id="awareness" class="papers">
-      <h3>Developer Awareness</h3>
 
       <!-- papers/security-docs.md -->
       <details id="owd" class="paper">
@@ -345,73 +412,6 @@ layout: subpage
         <section id="roadmap-authors">
           <h5>Authors</h5>
           <p>Joe Sepi is Chair of the OpenJS Cross Project Council (CPC), and Chair of the OpenJS Security Collaboration Space. Robin Ginn is an Executive Director of the OpenJS Foundation. Ben Sternthal is the OpenJS Program Director.</p>
-        </section>
-      </details>
-
-      <!-- papers/security-model-for-cookies.md -->
-      <details id="cookies" class="paper">
-        <summary>
-          <div>
-            <div>
-              <h4>Establishing a robust long-term security model for cookies on the web</h4>
-              <span>by Artur Janc.</span>
-            </div>
-          </div>
-        </summary>
-        <section id="cookies-desc">
-          <h5>Description</h5>
-          <p>Browser vendors' efforts to disable third-party cookies are motivated
-          primarily by privacy / anti-tracking considerations, but they have a
-          significant - and generally underappreciated - impact on the overall
-          security of the web platform. The presence of third-party cookies is the
-          root cause of multiple classes of vulnerabilities in web applications, such
-          as Cross-Site Request Forgery (CSRF), clickjacking and numerous cross-site
-          leaks; consequently, blocking the sending of cookies on cross-site requests
-          would provide web applications with substantial isolation benefits.</p>
-          <p>However, the anti-tracking focus of third-party cookie blocking efforts
-          carries a risk of leading to implementations which won't reliably protect
-          websites from cross-site attacks. For example, establishing the top-level
-          site as the boundary for sending third-party cookies (the current
-          implementation in multiple browsers) risks allowing untrusted embedded
-          content, such as ads, to send credentialed requests to endpoints hosted by
-          the top-level site and continue to exploit cross-site vulnerabilities.</p>
-          <p>Similarly, mechanisms meant to restore functionality limited by the
-          deprecation of third-party cookies, such as the
-          <a href="https://privacycg.github.io/storage-access/">Storage Access API</a>,
-          <a href="https://github.com/privacycg/CHIPS">Cookies Having Independent Partitioned State</a> (CHIPS),
-          <a href="https://fedidcg.github.io/FedCM/">Federated Credential Management API</a> (FedCM),
-          as well as various features to re-enable third-party cookies on a
-          per-site basis, need to grapple with the same scoping rules. The risk of
-          being overly permissive (for example, creating convenient mechanisms to
-          fully re-enable third-party cookies for a given site) is that it will
-          permit web-based attackers to bypass built-in isolation defenses. This is
-          particularly concerning in the long run: if the web is safe by default from
-          cross-site vulnerabilities, developers will pay less attention to
-          implementing application mitigations (such as the use of CSRF tokens or
-          <code>X-Frame-Options</code> headers). As a result, attackers who can regain access to
-          third-party cookies on their sites will be able to exploit gaps in
-          isolation on a large fraction of the web.</p>
-          <p>This session is meant to discuss the cookie model that we're aiming for
-          from a security perspective, including a review of the potential security
-          benefits of reliable third-party cookie blocking. It also aims to identify
-          specific hardening opportunities for browsers' third-party cookie blocking
-          logic to help browser vendors improve their implementations.</p>
-        </section>
-        <section id="cookies-links">
-          <h5>Links</h5>
-          <ul>
-            <li><a href="https://docs.google.com/document/d/1AsrETl-7XvnZNbG81Zy9BcZfKbqACQYBSrjM3VsIpjY/edit#">Improving the Storage Access API security model</a></li>
-            <li><a href="https://github.com/privacycg/storage-access/issues/113" data-hovercard-type="issue" data-hovercard-url="/privacycg/storage-access/issues/113/hovercard">Issue raised on the Storage Access API security model</a></li>
-            <li><a href="https://github.com/DCtheTall/standardizing-cross-site-cookie-semantics">Standardizing Security Semantics of Cross-Site Cookies</a></li>
-            <li><a href="https://secweb.work/2023.html">Keynote by Artur Janc on (Re-)Designing the web's cookie model with security in mind</a> - SecWeb Workshop - May 2023</li>
-          </ul>
-        </section>
-        <section id="cookies-author">
-          <h5>Author</h5>
-          <p>Artur Janc is the Team Leader for web security on Google's Information Security
-          Engineering team, focusing on the adoption of security features across the
-          Google web ecosystem as well as broader security and privacy improvements to
-          the web platform.</p>
         </section>
       </details>
     </section>
