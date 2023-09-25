@@ -934,3 +934,35 @@ ul ul {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+span.time {
+  display: inline-block;
+  background-color: #c0d9af;
+  padding: 0 4px;
+  border-radius: 5px
+}
+
+#session-1,
+#session-2,
+#session-3 {
+  margin-top: 3em;
+  border-top: thin dashed #bbb;
+}
+
+#session-1 > ul,
+#session-2 > ul,
+#session-3 > ul {
+  list-style: none;
+}
+
+#session-1 > ul > li,
+#session-2 > ul > li,
+#session-3 > ul > li {
+  margin-bottom: 0.5em;
+}
+
+#session-1 > ul ul,
+#session-2 > ul ul,
+#session-3 > ul ul {
+  margin-left: 2em;
+}
