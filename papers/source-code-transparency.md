@@ -94,10 +94,13 @@ GitHub repository for discussions.
 
 ## Author
 
-Daniel Huigens is the cryptography team lead at [Proton](https://proton.me/). He
-maintains [OpenPGP.js](https://github.com/openpgpjs/openpgpjs) and
-[go-crypto](https://github.com/ProtonMail/go-crypto), both of which implement
-the OpenPGP standard of encryption. Daniel is also a co-author of the
-[OpenPGP crypto-refresh](https://datatracker.ietf.org/doc/html/draft-ietf-openpgp-crypto-refresh)
-draft standard and edits the
-[Web Cryptography API specification](https://w3c.github.io/webcrypto/).
+Daniel Huigens is the cryptography team lead at [Proton](https://proton.me/).
+He is the editor of the
+[Web Cryptography API specification](https://w3c.github.io/webcrypto/),
+and the author of the
+[Secure Curves in Web Crypto](https://wicg.github.io/webcrypto-secure-curves/)
+draft.
+ 
+He has also been thinking about web application security for roughly a
+decade, having created [Airborn](https://www.airborn.io/) (a browser-based
+encrypted documents editor) in 2014.
