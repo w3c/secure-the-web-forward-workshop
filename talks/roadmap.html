@@ -1,0 +1,110 @@
+---
+title: Roadmap planning for a JavaScript security framework - Joe Sepi, Robin Ginn, Ben Sternthal - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Roadmap planning for a JavaScript security framework</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Joe Sepi, Robin Ginn, Ben Sternthal</strong><br/>
+      Position paper: <a href="../papers.html#roadmap">Roadmap planning for a JavaScript security framework</a><br/>
+      Slides: <a href="https://docs.google.com/presentation/d/1j0ETWW1XtQ8M9xeFcKvi2Z4oczcxn1KtELIghvsvLDc/edit">HTML</a> | <a href="slides/roadmap.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Roadmap planning for a JavaScript security framework" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/7219d897e9b4ca4debc0e1e7b544d704/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/roadmap.pdf#1" class="slide">Slide 1 of 14</i-slide>
+<div>
+<p data-start="5.38"><cite>Joe:</cite> I'm Joe Sepi. I work at IBM, but I spend a good chunk of my time over at the OpenJS Foundation Chairing the Cross Project Council, which is their top Advisory Committee, and also help spearhead the Security collaboration space, which is like a SIG or a working group. And so we wanted to share with what we've had going on at the Security Cloud space.</p>
+<p data-start="36.29"><cite>Ben:</cite> Thanks, Joe. My name is Ben Sternthal. I'm a program director at Linux Foundation, and I spent a lot of time on OpenJS. It's one of the projects I support. I've been here for 7 months and was very lucky that, like the day that I started this project kinda fell into my lap. And so I'm very lucky to be working on it. I wanna share what we've been doing related to the sovereign tech fund with you today. try and get some advice from the hive mind here on what we might be able to do better. And maybe some blind spots that we have. So definitely wanna thank everyone for the opportunity to speak today. I see some familiar faces here which is kinda cool, folks I haven't seen in a while, and it's good to reconnect. So let's dive in.</p>
+<p data-start="83.25"><cite>Ben:</cite> It's a short presentation today, only 150 slides, so I'll have to go pretty quick!</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/roadmap.pdf#2" class="slide">Slide 2 of 14</i-slide>
+<div>
+<p data-start="88.81"><cite>Ben:</cite> Just kidding. It's not a 150 slides alright. So 3 things I wanna cover, and I can be pretty brief here. I wanna just spend a little bit of time talking about the German Sovereign Tech fund who OpenJS has been working with and what what they're doing and how that's funding our work.</p>
+<p data-start="107.89"><cite>Ben:</cite> Relevant to the discussion today is I'm gonna concentrate on our security and maintenance work stream that the Sovereign Tech Fund is essentially paying for. And then to some discussion questions. So just something to keep in mind as I'm going through this presentation, just keep these 2 questions in the back of your head. The first is do we have blind spots? Are there things that we're missing that are obvious. Like, I'll be honest, you live in a little bit of a bubble, and getting your broader perspective on what we might be missing is really important. And the second thing to keep in the back of your head is: how can we amplify the work that we're doing? OpenJS is pretty small. There's a limit to how much outreach we can do, but I'm sure that we can do a lot more to get the work that we're doing in front of more people. And to have that work be more impactful.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/roadmap.pdf#3" class="slide">Slide 3 of 14</i-slide>
+<div>
+<p data-start="157"><cite>Ben:</cite> With that, I'll talk a little bit about the Sovereign Tech Fund.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/roadmap.pdf#4" class="slide">Slide 4 of 14</i-slide>
+<div>
+<p data-start="162.31"><cite>Ben:</cite> I don't know if folks here know about the German sovereign tech fund or not. But it's an amazing group. They're actually... the folks that work there are super nice. There's a long bit of text here, but the most important thing I highlighted in green, which is that one of the approach the Sovereign Tech fund has, and something that they're very prominent about is that the sustainability of the open source ecosystem is crucial, and we must understand the support of our digital infrastructure as a public task.</p>
+<p data-start="190.18"><cite>Ben:</cite> This, to me, is new. Like, I haven't really seen government support of open source, like direct funding like this in the past, I mean, maybe the National Science Foundation does these huge things somewhere, but like it seems kind of distant from really getting stuff on the ground. I bring this up because I think we're gonna see more of this. I think the US Government is gonna take a larger role in funding open source and really treating it as a public good. And I think other governments across Europe are probably gonna do the same thing. So I think the Germans were first but it's very cool and I think it's an acknowledgement of something that we probably all inherently know.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/roadmap.pdf#5" class="slide">Slide 5 of 14</i-slide>
+<div>
+<p data-start="228.92"><cite>Ben:</cite> So what does the relationship with the Sovereign Tech Fund actually mean? So they are funding approximately $900,000, give or take, depending on the exchange rate on any given day, but approximately $900,000, through 2024 to fund 2 work streams for OpenJS projects.</p>
+<p data-start="247.62"><cite>Ben:</cite> The first is infrastructure updates. And just briefly, this is really about getting our 35 or so projects that we have in OpenJS to start using some common infrastructure and to derisk some of the bus factor that we have on the projects.</p>
+<p data-start="265.94"><cite>Ben:</cite> The second workstream, which is the one I want to concentrate on today is funding security and maintenance for critical projects.</p>
+<p data-start="273.04"><cite>Ben:</cite> And the way that we're structuring our work is, it's not really like a grant. We have basically quarterly milestones that we hit, that we have to hit each quarter in order to get to get paid. So it's kind of an interesting relationship.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/roadmap.pdf#6" class="slide">Slide 6 of 14</i-slide>
+<div>
+<p data-start="287.73"><cite>Ben:</cite> So a little bit more details about the security maintenance workstream.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/roadmap.pdf#7" class="slide">Slide 7 of 14</i-slide>
+<div>
+<p data-start="290"><cite>Ben:</cite> Goal of the workstream is to advance security skills and processes among the contributor and implementer communities to strengthen the Javascript ecosystem broadly. I think this is a very relevant goal. Given some of the discussions that we've had today.</p>
+</div>
+
+</div><div id="ts-8"><i-slide src="slides/roadmap.pdf#8" class="slide">Slide 8 of 14</i-slide>
+<div>
+<p data-start="303.48"><cite>Ben:</cite> Our approach for doing this. There's really 4 focus areas that we've got here. The first is audits, and I'll talk about more of these in depth. A security framework supporting secure releases and improving and documenting security processes.</p>
+</div>
+
+</div><div id="ts-9"><i-slide src="slides/roadmap.pdf#9" class="slide">Slide 9 of 14</i-slide>
+<div>
+<p data-start="320.24"><cite>Ben:</cite> So a little bit more of detail in each of these. So the first is this idea of audits, and this is an inventory and analysis of our most important projects and actually doing audits, and actually using those audits to identify security problems and fixing them. So we're going through OSTIF, who's helping us with this, which is which is the Open Source Technology Improvement Fund.</p>
+<p data-start="344.59"><cite>Ben:</cite> I will be honest with you. The audits are incredibly impactful, but also expensive. We can't do all of our projects. We're starting with like 3, and that's kind of our entire budget. But these are really amazing. We get these third party security experts to go through all of the code. All of the deployment come up with a prioritized list of things to fix and actually help maintain errs with fixes so very impactful, very expensive.</p>
+</div>
+
+</div><div id="ts-10"><i-slide src="slides/roadmap.pdf#10" class="slide">Slide 10 of 14</i-slide>
+<div>
+<p data-start="375.58"><cite>Ben:</cite> The next is what we're calling a security framework. And this is a collection of best practices that we're developing for our projects. That we're also going to publish and make available publicly. So first up is customizing OpenSSF and OWASP best practices. If you've gone through any of the openssf badging stuff, some of that stuff is not a hundred percent applicable to a web project, or a Javascript project. Se've had to do a lot of explaining about what folks might need to do in certain circumstances. So the output here is, we've got a document that explains point by point: here's a little bit more information about some of these things. And here, this is how this is relevant to to Javascript and Javascript projects. We're also looking to create a free Javascript training and courses as part of our effort.</p>
+</div>
+
+</div><div id="ts-11"><i-slide src="slides/roadmap.pdf#11" class="slide">Slide 11 of 14</i-slide>
+<div>
+<p data-start="431.75"><cite>Ben:</cite> So next up is direct support for secure releases and improve processes. The main focus here is around signing and deployment is how I would describe this. Secure signing of releases, SBOMs, streamlining release processes. Again, the output of this is going to be a set of documents that we then use to apply to our highest priority projects. this has been just to add a little color here. This has been difficult, especially around trying to come up with a recommendation around SBOMs. and I saw some of the notes from the SBOM conversation you had earlier in the week, like trying to come up with an easy recommendation at this point in time is not easy. We've spent hours going around in circles discussing what we should do here. And so if you think about that as an example: we're the experts trying to come up with a solution. Imagine someone that doesn't have that expertise, Googling around the Internet on like, what should I do about SBOM. I think that demonstrates how important you know an accessible practical recommendation here. You know how important that really is.</p>
+</div>
+
+</div><div id="ts-12"><i-slide src="slides/roadmap.pdf#12" class="slide">Slide 12 of 14</i-slide>
+<div>
+<p data-start="508.96"><cite>Ben:</cite> With that being said. Those are our main bodies of work. Joe and I met and kind of discussed like you know what would be useful to us selfishly.</p>
+</div>
+
+</div><div id="ts-13"><i-slide src="slides/roadmap.pdf#13" class="slide">Slide 13 of 14</i-slide>
+<div>
+<p data-start="522.19"><cite>Ben:</cite> First thing is really, what are we missing? We've got a couple areas that we want to make recommendations on. And we've got a couple of areas that we want to fix on our projects and also make that information available publicly. But I'm sure we're missing stuff. And there's other things that we can add to our roadmap.</p>
+</div>
+
+</div><div id="ts-14"><i-slide src="slides/roadmap.pdf#14" class="slide">Slide 14 of 14</i-slide>
+<div>
+<p data-start="540"><cite>Ben:</cite> And the second big question here is, how can we amplify the work that we're doing in the community to have more impact? How can we partner with folks? Possibly MDN, or other folks to get the stuff that we're doing in front of more people in the community. So it can be leveraged more. There's a limit: us publishing on our blog or tweeting about something, that has really a limited reach. And so if we wanna amplify the work that we're doing, it's gonna involve working with folks like who's on this call and possibly other folks.</p>
+<p data-start="576.3"><cite>Ben:</cite> Joe, I don't know. I'm gonna pause there, and see if you've got other things that you wanna mention.</p>
+<p data-start="582.42"><cite>Joe:</cite> No, that's great happy to open it up.</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

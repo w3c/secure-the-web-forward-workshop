@@ -1,0 +1,106 @@
+---
+title: JavaScript realms are used to bypass and eliminate many existing web apps security tools span A problem with a WIP solution - Gal Weizman - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>JavaScript realms are used to bypass and eliminate many existing web apps security tools span A problem with a WIP solution</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Gal Weizman</strong><br/>
+      Position paper: <a href="../papers.html#realms">JavaScript realms are used to bypass and eliminate many existing web apps security tools span A problem with a WIP solution</a><br/>
+      Slides: <a href="slides/realms.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="JavaScript realms are used to bypass and eliminate many existing web apps security tools span A problem with a WIP solution" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/4e519486dddcacd09f575b940691cab8/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/realms.pdf#1" class="slide">Slide 1 of 13</i-slide>
+<div>
+<p data-start="5.79"><cite>Gal Weizman:</cite> Hi, guys, my name is Gal. I work for Metamask. I do Javascript security there. And I currently focus on what we call the same origin concern? So I'd like to talk a little bit about what is the same region concerns, something that we've been working on, give a little background for the problem, and then talk a little bit about some of the solutions that we've been working on for the past year and a half, and, most importantly, some of the conclusions that came out of working about on this issue.</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/realms.pdf#2" class="slide">Slide 2 of 13</i-slide>
+<div>
+<p data-start="48.33"><cite>Gal Weizman:</cite> So first of all, a little bit of background. The fact that we embrace composability driven development is great. We have web applications that are running on top of code of other people. And that is a great thing.</p>
+<p data-start="66.72"><cite>Gal Weizman:</cite> But naturally that also introduces security concerns. And when I think about it, these 2 security concerns can be splitted into 2 main aspects. The first aspect would be the build-time concern. So the build-time, you might know it as a supply chain and packages and dependencies, and the fact that an application is being built and bundled to be executed later in the browser. So a lot of maliciousness can be introduced at that point. And we are definitely concerned about that. But there is a whole different aspect, which is the runtime aspect.</p>
+<p data-start="110.15"><cite>Gal Weizman:</cite> We also know it as ads services and third party scripts in general. These are other ways to compose software which is not through the build time. And this basically happens on the fly in the browser, and is also a way to compose web applications. And that's also another way to introduce problematic security concerns and malicious code.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/realms.pdf#3" class="slide">Slide 3 of 13</i-slide>
+<div>
+<p data-start="140.12"><cite>Gal Weizman:</cite> The motivation to that naturally is to try to come up with security tools to protect the runtime. So we're gonna focus on runtime, we're not gonna focus on the build time aspect, because obviously, the build time is definitely a problem, and there are a lot of attempts to secure that aspect.</p>
+<p data-start="161.81"><cite>Gal Weizman:</cite> But it's regardless to the runtime aspect and therefore we're gonna focus on that today. So naturally, we see a rise in the need for runtime security tools. And I wanna be more clear about what these runtime security tools are. So basically, we want to create Javascript code that is destined to execute at runtime in the browser in the web application. It could be installed via a third party script, it could be installed as part of the bundling process. But the main point is that this Javascript code is destined to run at runtime and attempt to protect the application.</p>
+<p data-start="203.66"><cite>Gal Weizman:</cite> By protect, that could mean a lot of things. We could try to observe and perhaps block behavior and access to sensitive operations at runtime. Whether it's network, DOM, storage access, these are things that we might want to to protect. We might want to limit in general the global environment in which the application is going to be executing in to make it maybe less useful for attackers. And in general, just like alter functionality and the environment, so that APIs are hardened and more secure. And I think this is a really important security layer, because there's just so many parts of applications. Traditional applications are being composed at runtime. So we have to find a way to protect these at runtime.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/realms.pdf#4" class="slide">Slide 4 of 13</i-slide>
+<div>
+<p data-start="262.47"><cite>Gal Weizman:</cite> In reality, what this means is trying to apply some protection at runtime to the application. This would be an oversimplified example but it should give you the gist of it. Local storage is an example for a sensitive API where we might store sensitive information. One thing that these security tools are trying to achieve is to have some security layer on top of the getItem function for example, and make sure that the application still has access to items, if it has access to a predefined key, for example.</p>
+<p data-start="304.67"><cite>Gal Weizman:</cite> But then, if any malicious code has the ability to execute within the application, if it doesn't have the secret, they're not gonna be able to access storage. So this is just an example of like things that that security runtime tools can attempt to accomplish, to perform better security.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/realms.pdf#5" class="slide">Slide 5 of 13</i-slide>
+<div>
+<p data-start="324.65"><cite>Gal Weizman:</cite> But there's a problem with that, and this relates to the same origin concern. Zb talked about same origin policies before, and this is a good place to talk about them also, because the browser is really good at protecting app realms from each other if they are cross origin to each other, which is great. Because we compose software that way. We fetch information and functionality from cross origins. And we wanna make sure that they don't have the ability to affect the main realm of the application. But the problem is that this naturally means the opposite. It means that if 2 realms are from the same origin they are completely trustworthy. and the way composability works today isn't really compatible with that, because nowadays, the way we compose software using supply chain and fetching scripts that run in the same realm as the application. They all run in the same realm. And we're talking about code that we don't necessarily know and trust.</p>
+<p data-start="402.88"><cite>Gal Weizman:</cite> And they all execute in one same realm. And therefore it doesn't have any protection against same origin realms. This problem undermines such runtime security tools almost completely. And I would like to demonstrate exactly how just for it to make sense.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/realms.pdf#6" class="slide">Slide 6 of 13</i-slide>
+<div>
+<p data-start="424.8"><cite>Gal Weizman:</cite> So if we take the former example, you can see here 2 techniques to access the local storage on top of the mechanism introduced before. So the first one is the get local storage naively. Where we try to simply getItem and because of the security mechanism from before, and because of the fact that we don't provide the necessary secrets, we're getting a null value.</p>
+<p data-start="452.12"><cite>Gal Weizman:</cite> But the problem is that the bypass function can bypass that security mechanism very simply by just creating a new same origin realm and then reaching into that same origin realm instance of localStorage which is not being protected by the security mechanism by default. In this context, the way we create the same origin realm is by using an iframe.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/realms.pdf#7" class="slide">Slide 7 of 13</i-slide>
+<div>
+<p data-start="478.82"><cite>Gal Weizman:</cite> This bypasses the mechanism almost completely. And this example easily extends on. I mean, it doesn't have to stop at localStorage. It could extend onto any security mechanism we're trying to apply. We're talking about DOM, we're talking about network access. We're talking about shaping the global object in the environment so that it's more secure. But if you can leverage yourself into another same region realm which is not protected by default, the security tools are going to have a really hard time protecting you.</p>
+<p data-start="512.46"><cite>Gal Weizman:</cite> Which is why I think the same origin concern matters. Which is why I want to talk about it today.</p>
+</div>
+
+</div><div id="ts-8"><i-slide src="slides/realms.pdf#8" class="slide">Slide 8 of 13</i-slide>
+<div>
+<p data-start="522.89"><cite>Gal Weizman:</cite> I've been working on this problem for a few years now. And I have implemented a Javascript shim. That is part of the work we're doing at Metamask. We call it Snow JS. And what it does is that it takes such security mechanism as demonstrated before, and it applies it automatically to all same origin realms that are being initiated in the application. So if an attacker creates the same region realm and try to bypass your security mechanisms, Snow would make sure to first take that security mechanism and apply it to the new same origin realm.</p>
+<p data-start="563.75"><cite>Gal Weizman:</cite> But this solution is far for being adequate for 2 main reasons. First of all, security wise, this is really difficult, creating this as a Javascript shim is really complicated. There are so many ways to create same origin realms, and we don't have the information from the browser to tell when these same origin realms are being created. So virtualizing it is really complicated, and the community managed to show us a lot of security gaps throughout the years in this scenario.</p>
+<p data-start="597.98"><cite>Gal Weizman:</cite> And I think, most importantly, even if this solution was perfectly secure, it would mean introducing a performance overhead, because the virtualization of the APIs that are protecting this problem just introduce a performance headache.</p>
+</div>
+
+</div><div id="ts-9"><i-slide src="slides/realms.pdf#9" class="slide">Slide 9 of 13</i-slide>
+<div>
+<p data-start="619.57"><cite>Gal Weizman:</cite> So based on the conclusions from the solution we've been working on, we have a few ideas. I think the main point is that we're not sure how the solution should look but the idea is that we want to be able to provide security against same origin realms for the application.</p>
+</div>
+
+</div><div id="ts-10"><i-slide src="slides/realms.pdf#10" class="slide">Slide 10 of 13</i-slide>
+<div>
+<p data-start="638.85"><cite>Gal Weizman:</cite> Just to wrap up. This is the proposal part. We have a general idea of what we imagine. I think we can leverage existing APIs in the browser to achieve this solution. And I think CSP is a really good candidate for that.</p>
+<p data-start="654.19"><cite>Gal Weizman:</cite> For 2 main reasons. The first reason is that CSP is already really good at enforcing rules onto realms recursively. It already does that perfectly. And that is exactly what we're trying to achieve with Snow. And what we want to be able to to to address this problem. And in general, CSP is just like an adequate mechanism for enforcing security policies in general. And this is a proposal for a security policy.</p>
+</div>
+
+</div><div id="ts-11"><i-slide src="slides/realms.pdf#11" class="slide">Slide 11 of 13</i-slide>
+<div>
+<p data-start="685.32"><cite>Gal Weizman:</cite> So we imagine a new CSP directive Its value could be to a remote Javascript file path. And</p>
+</div>
+
+</div><div id="ts-12"><i-slide src="slides/realms.pdf#12" class="slide">Slide 12 of 13</i-slide>
+<div>
+<p data-start="698.5"><cite>Gal Weizman:</cite> This is basically the idea. What we have in mind is that if we take the example from before, you can see that we implement the security mechanism in a remote path at the same origin as the application. And then we have a small CSP implementation here to ask the browser to take that Javascript file and load it with every new same origin realm that comes to life before its document. That way it has the ability to shape all the same region realms, and that we protect them against each other. and it just does that using CSP.</p>
+</div>
+
+</div><div id="ts-13"><i-slide src="slides/realms.pdf#13" class="slide">Slide 13 of 13</i-slide>
+<div>
+<p data-start="746.57"><cite>Gal Weizman:</cite> That is basically the idea. I think the bottom line is that I want the problem to be clear, and I want it to be clear that the solution is just an idea. We're not sure what it should be. This is just like a way for me to demonstrate what we had in mind. And we would love to discuss it.</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

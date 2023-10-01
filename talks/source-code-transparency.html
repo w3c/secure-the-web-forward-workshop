@@ -1,0 +1,78 @@
+---
+title: Source Code Transparency - Daniel Huigens - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Source Code Transparency</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Daniel Huigens</strong><br/>
+      Position paper: <a href="../papers.html#source-code-transparency">Source Code Transparency</a><br/>
+      Slides: <a href="slides/source-code-transparency.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Source Code Transparency" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/d0f96b1e6dd49e549b3d7a3e47d0943b/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/source-code-transparency.pdf#1" class="slide">Slide 1 of 7</i-slide>
+<div>
+<p data-start="6.16"><cite>Daniel:</cite> I'm Daniel Huigens. I'm the cryptography team lead at Proton and, adjacent to that, I'm also very interested in web application security in general.</p>
+<p data-start="21.29"><cite>Daniel:</cite> For my presentation, since I was a very late addition, I won't assume that everybody has read the position paper. If you did, thanks!, I hope the presentation will still be interesting. With that I will share my screen. Here we go. This is a very early and rough proposal or idea that was also discussed in the Web Application Security Working Group meeting in Sevilla last week, or 2 weeks ago. The working title for now is Source Code Transparency. But even that is still</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/source-code-transparency.pdf#2" class="slide">Slide 2 of 7</i-slide>
+<div>
+<p data-start="81.64"><cite>Daniel:</cite> up for debate or change. What's the goal of this proposal? What do we want to achieve? Basically, we would like to allow or enable web apps to be built that don't trust the server.</p>
+<p data-start="103.83"><cite>Daniel:</cite> For example, this could be web apps that use client side encryption to protect all the users data before sending it to the server, or it could be web apps that don't send any sensitive data to the server at all, and process all the users data purely client side.</p>
+<p data-start="127.01"><cite>Daniel:</cite> Today, this is very hard to achieve, because every time you open a web app, the browser loads the source code from the server and runs it immediately without doing any special kind of checks. So, even if a web app claims that the user's data is not sent to the server or is encrypted first,iIt's very difficult for the user to check that. Or even for a security researcher, it's very difficult to check, because, even if they read the source code, the source code that the server sends to a different user might be completely different.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/source-code-transparency.pdf#3" class="slide">Slide 3 of 7</i-slide>
+<div>
+<p data-start="182.31"><cite>Daniel:</cite> So there have been some solutions to this. The most notable, or perhaps the most well known one, is: WhatsApp built a browser extension that checks that the source code is signed by a third party, in their case Cloudflare. This basically brings the number of trusted parties from one to 2, in the sense that both of those parties would need to collude to send a malicious version of the source code to a user. And then a security researcher can go and check the source code that was signed by Cloudflare and check that it was secure.</p>
+<p data-start="252.6"><cite>Daniel:</cite> I won't go through all of these but another proposal was binary transparency, which was a proposal by Mozilla, but not for web apps, but for their actual... for the browser, so for Firefox, to publish the hash of the binary or updates to firefox to Certificate Transparency, which is another transparency mechanism that I'll also get to in more detail. Basically, the idea was to publish the hash of the binary there, so that everybody could check that, basically, for a given version of Firefox,  there was only one binary.</p>
+<p data-start="308.39"><cite>Daniel:</cite> Then there's another related concept, but not exactly the same which is Sub-Resource Integrity, which basically allows you to give the hash of sub-resources. But this is not sufficient for our goal, because we also want to check the main resource. Basically the index.html if you load the web app.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/source-code-transparency.pdf#4" class="slide">Slide 4 of 7</i-slide>
+<div>
+<p data-start="338.86"><cite>Daniel:</cite> What's the idea here of source code transparency? Basically, the idea is we want to publish a hash of the source code to some transparency log and allow browsers to check the source code that they received when they load the web app against this transparency log and make sure that everybody receives the same source code for a given version of the web app when they load that web app from a domain.</p>
+<p data-start="379.94"><cite>Daniel:</cite> And basically allow auditors to check that source code is secure. And, again, that the transparency log is behaving consistently, and that the server is behaving consistently as well in the sense that it's giving the same source code to all users.</p>
+<p data-start="407.12"><cite>Daniel:</cite> And then, if any one of those users, including a security researcher, for example, checks the source code and somehow determines that there are no vulnerabilities in it, then that basically proves that the web app is secure for all users, which is the goal. And this allows a security researcher to use the security related tools that they already have such as CSP, SRI, but also the topics before such as SBOM and reproducible builds, to verify the source code and make sure that again the web app is secure in general. Where, before, an SBOM for example could be used by the author of the Web app to see what's in the web app, and so on. Now you can... If we have something like source code transparency the author could publish the SBOM somewhere and if you then also have a demo reproducible build, you could demonstrate: Okay, here's the source code on Git or whatever, and here, if you build it, then you get the build source code. And then, if you hash it, you can check it in the source code transparency log. And that way you know that the source code that is published there, is what gets actually distributed to all users, and then you can cross-check that with SBOM and see that there are no vulnerabilities for example.</p>
+<p data-start="537.21"><cite>Daniel:</cite> I hope that makes sense. Otherwise let me know afterwards.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/source-code-transparency.pdf#5" class="slide">Slide 5 of 7</i-slide>
+<div>
+<p data-start="541.37"><cite>Daniel:</cite> Okay. So then, as an aside. There is a certificate transparency, which is an existing mechanism where all TLS certificates are published, that we could piggy-back on top of to also provide source code transparency.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/source-code-transparency.pdf#6" class="slide">Slide 6 of 7</i-slide>
+<div>
+<p data-start="564.57"><cite>Daniel:</cite> How would we do that? One concrete way to do this would be to create a signed web bundle of all the resources in the web app. This is also an existing proposal in the W3C.</p>
+<p data-start="583.46"><cite>Daniel:</cite> And when you create that you could send a hash of this web bundle to the source code transparency log and the source code transparency log could include it in their append-only log, together with all the hashes of the other web bundles of other web apps that use source code transparency, and basically build a map of the domain and the version of the web app to the hash of the web bundle. And then, periodically, publish a hash tree, for example, of all of these hashes and basically create an append-only chain of these hash trees to make sure that the hash is included in every published hash tree. Such that a browser can check: Okay, the hash that I receive or the hash of the web bundle that I receive is included in this source code transparency log, therefore, security research researchers will also see it.</p>
+<p data-start="663.1"><cite>Daniel:</cite> And it's the correct source code for this web bundle. And then we could create an X.509 TLS certificate extension indicating that source code transparency should be used and that the browser should look at this source code transparency log which would, then again, piggy-back on certificate transparency and make sure that, whenever you load a web app over HTTPS using such a certificate, that the browser knows: Okay, this is a participating web app and I should do this check. And then security researchers can check all the certificates in certificate transparency to make sure that yes, actually, the web app is using source code transparency, and indeed, all other users of this web app will also do this check if they're using a browser that supports source code transparency.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/source-code-transparency.pdf#7" class="slide">Slide 7 of 7</i-slide>
+<div>
+<p data-start="729.74"><cite>Daniel:</cite> I think that's the main proposal. In the interest of facilitating discussion, I'll list some challenges that are up for debates or up for discussion. So one is should we allow updates immediately? Meaning should you be able to ship an update to a web app immediately, same as today? Or should you wait until it's included in the log?</p>
+<p data-start="769.25"><cite>Daniel:</cite> Arguably, even if you wait until it's included in the log, vulnerabilities will only be detected once a security researcher actually looks at the source code and detects a vulnerability. So perhaps it doesn't matter.</p>
+<p data-start="791.91"><cite>Daniel:</cite> Then another point is, if we use the domain, does it mean you can only ship one web app per domain? Or if we use the path, then user might land somewhere else on the domain.</p>
+<p data-start="810.09"><cite>Daniel:</cite> And then there are details to be discussed. What if you get an error? Clearly, we shouldn't allow the server to just give an error page with completely different Javascript. That would be bad. But also we can't prevent errors from happening. So there are interesting details to be discussed. But I'll stop there. Thanks! Any questions?</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

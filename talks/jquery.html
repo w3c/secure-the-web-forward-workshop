@@ -1,0 +1,45 @@
+---
+title: Can securing jQuery help secure the Web forward? - Tobie Langel - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Can securing jQuery help secure the Web forward?</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Tobie Langel</strong><br/>
+      Position paper: <a href="../papers.html#jquery">Can securing jQuery help secure the Web forward?</a><br/>
+      
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Can securing jQuery help secure the Web forward?" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/c748fd10b4f2f2f494c12f71d26a1e3e/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <p data-start="5.61"><cite>Tobie:</cite> Hello, everyone, and thank you for joining this workshop about securing the web forward. I must say that I really like the reference to Test the Web forward and Move the Web forward, and a whole bunch of grass root efforts that have done so much to improve the web over the last close to 2 decades at this point.</p>
+<p data-start="31.53"><cite>Tobie:</cite> My name is Tobie Langel. I don't have a deck. I'm going to share with you very briefly what I'm working on jQuery, which, for those who know me, is an interesting turn of events. as there was a time, a long time ago, where jQuery and the Prototype Javascript framework, which was the open source framework that I was heavily involved with, were essentially competing against one another. And then that was a long time ago, and a whole bunch of things happened. And jQuery had this incredible meteoric success. And close to 15 years later, that might be at this point, I'm kind of back working into the front end Javascript framework world, and it's interesting to be back there, and it's a fun turn of events.</p>
+<p data-start="87.02"><cite>Tobie:</cite> So there's a background to this, which I think we're all very much aware of. Which is essentially the rise of the web and Javascript. And all of this technology going very mainstream over the course of those 2 decades. And my kids are coming in home right now, and I'm gonna go close my office door. Sorry about this! Sorry. And that's resolved!</p>
+<p data-start="130.47"><cite>Tobie:</cite> We've faced these huge security issues that we've seen grow over the last few years around open source and increasing concerns around supply chain and attacks and open source being such a big part of the web stack that obviously security concerns around it impact everything. And so there's a lot of effort put into this and the OpenSSF has launched this new, very ambitious project called Alpha Omega, and as part of the Alpha part of the Alpha Omega Project, which is focused on, I think it's a hundred high stakes projects, there's been a budget allocated to working to secure jQuery. Which is the effort I'm involved with through the OpenJS Foundation.</p>
+<p data-start="188.68"><cite>Tobie:</cite> What's really interesting about this is, whereas a lot of the focus on securing open source is really focused on back-end open-source, back-end work, and the specific security constraints of that. jQuery is among one of the very rare ones that's actually essentially a front end tool, and that has an entirely different security story, and an entirely different set of concerns, which I thought were super interesting to bring back into a conversation that's essentially overlapping web and Javascript. And that's why I offered to talk about this here.</p>
+<p data-start="236.52"><cite>Tobie:</cite> To me, what's really interesting is... Before I get into like the specific of what's interesting about front-end security compared to the rest of software security, I just want to share a few stats about jQuery. Actually I don't have the the references or the sources with me. But essentially, if you look at the number of websites deployed in the world today, you're talking about roughly 1.5 billion websites. And it turns out about two-thirds of those two-thirds of this, 1.5 billion websites, are actually running jQuery. which is entirely staggering. And so essentially mind blowing. There's essentially a billion websites that are running jQuery today.</p>
+<p data-start="290.37"><cite>Tobie:</cite> The other really wild stat around, this is about half of this 1 billion. So half a billion. A third of the web is running outdated and unpatched version of jQuery.</p>
+<p data-start="308.27"><cite>Tobie:</cite> And so OpenJS Foundation has commanded a whole study around this, and the results are going to be shared like soonish at this point. It's really interesting to have this piece of software, which is so ubiquitous and also that suffers from the issues that a lot of open source suffers from, ie., very few people actually working on it. Not a lot of main of maintenance, not a lot of resources poured into it. And that's a really interesting situation.</p>
+<p data-start="351.37"><cite>Tobie:</cite> One of the stats that's really interesting is, whereas a lot of respondents to the study that was commended by OpenJSF mentioned security concerns, and having had security issues, they're generally not tied directly to jQuery, even if they're running on patch versions.</p>
+<p data-start="379.94"><cite>Tobie:</cite> That ties into my other point, which is the huge difference between software run in the browser and and software run elsewhere is the the browser sandbox. There's a whole security model that is there to protect and prevent things from going really bad in browser, and in Javascript land in the browser. And so it begs the question as to what exactly does it mean to secure something like jQuery? What hole can jQuery open in the sandbox that doesn't exist without jQuery? And I think that's a really interesting question to think about, especially if we're thinking about developer experience and sort of making it easier for developers to do the right thing.</p>
+<p data-start="439.52"><cite>Tobie:</cite> That's the kind of conversation that I'm hoping to have today. One conversation that I feel has been very much missing is, if you're building front-end code, what exactly are the things where you can really create issues that cannot be defended by the sandbox? And what are we doing collectively as an industry to try to prevent those?</p>
+<p data-start="473.48"><cite>Tobie:</cite> Also, what can libraries or other tools, but libraries like jQuery, do to sort of essentially make best practices the default, or you know, the go-to option of front-end development.</p>
+<p data-start="493.38"><cite>Tobie:</cite> And really, that's really what I would want to be able to talk about: first of all, identify those security concerns, those security issues that affect code that is sandboxed by the browser as a first step. As a second step, figure out how we can document them and communicate them clearly to developers.</p>
+<p data-start="518.11"><cite>Tobie:</cite> As a third step, figure out how collectively we can improve the odds of those issues not happening. It's a fairly different take than, for example, the conversations that we had yesterday. It's fairly constrained by the browser sandbox. But I think it's something where we could collectively do a lot more. Because when I actually went looking to figure out what exact security issues can jQuery create, it turns out that I couldn't find lots of documentation on this and it would be great if that kind of documentation was easier to find, which is also why I'm excited to feed people from Open Web Docs being here today. I think it's great.</p>
+<p data-start="562.06"><cite>Tobie:</cite> Essentially, that's really what I wanted to share. I'm happy to answer questions. If folks have questions.</p>
+
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

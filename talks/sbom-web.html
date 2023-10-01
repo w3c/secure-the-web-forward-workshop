@@ -1,0 +1,75 @@
+---
+title: Software Bill of Materials for web frontends - Jan Kowalleck - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Software Bill of Materials for web frontends</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Jan Kowalleck</strong><br/>
+      Position paper: <a href="../papers.html#sbom-web">Software Bill of Materials for web frontends</a><br/>
+      Slides: <a href="slides/sbom-web.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Software Bill of Materials for web frontends" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/a1eaaa161bd3ebfc818be2a62b07b822/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/sbom-web.pdf#1" class="slide">Slide 1 of 7</i-slide>
+<div>
+<p data-start="5.65"><cite>Jan:</cite> Thanks for having me. As said before, I assume everybody read the papers for today. I won't go into everything that I wrote earlier. I'll pick up the most interesting parts, or the parts that might not be familiar or need to be known for later discussions. As you can see here, it's just a quick and dirty presentation. Just a few words about me.</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/sbom-web.pdf#2" class="slide">Slide 2 of 7</i-slide>
+<div>
+<p data-start="41.75"><cite>Jan:</cite> I'm a software engineer architect. I'm not a manager or anything, I don't do security for my living. I just write tools or libraries related to SBOM which is short for Software Bill of Materials. And I'm a project co-lead for the OWASP CycloneDX Project. Which is just one thing related to SBOM.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/sbom-web.pdf#3" class="slide">Slide 3 of 7</i-slide>
+<div>
+<p data-start="72.91"><cite>Jan:</cite> And since we're talking about SBOM, we need to make clear what it is and what it isn't.</p>
+<p data-start="82.4"><cite>Jan:</cite> In general, you could just think of it like the backside of a bottle of shampoo or something, where you read there's water inside your shampoo, which might be interesting. And all this other great stuff in there.</p>
+<p data-start="98.99"><cite>Jan:</cite> You might think of it like a little bit of more information. I mean, water's free. and everybody has it. But an SBOM could also include where the water was sourced from, an SBOM could tell you which license was put on this water and special, or if the water was modified, somehow. Which is usually not a thing for bother, but since we're talking about software, this is a really common practice. There's this one thing that was used in your product software product. And you wonder: where did I get it from? How was it licensed?</p>
+<p data-start="144.49"><cite>Jan:</cite> We're not at Software bill of materials at that point, but what I'm talking about or will be talking about is not the how something was manufactured or produced. It's not the information that your water was stewed for like 50 min, or something, or whatever it could be. This would be not software bill of materials. This would be a manufacturing bill of materials, which is yet another talk, maybe.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/sbom-web.pdf#4" class="slide">Slide 4 of 7</i-slide>
+<div>
+<p data-start="175.24"><cite>Jan:</cite> And since we are talking about web front-ends in my talk, or I would better say, it's a web deliverable, something that is delivered from the web and run in the web browser, which means, in the end, it runs on a client's hardware somewhere. It runs on clients software.</p>
+<p data-start="200.69"><cite>Jan:</cite> This might include security risks, doubts. All the usual legal aspects just like that. And security issues. And since we're talking about web front-ends nowadays, and not like 20 years ago, we have the situation that web front-ends deliverables in general might consist of many, many components that aren't written by you, your company, your organization.</p>
+<p data-start="237.01"><cite>Jan:</cite> That might be sourced from externals, maybe trusted sources, maybe sources through trusted channels or untrusted channels. And all these components might be bundled somehow. They might be modified, patched. And in the end these components are usually get meshed up somehow there, processed, compressed, modified, [missed], and everything, by tools like webpack, for example. Which is just one example for a whole family of programs that have the idea to make web deliverables smaller, more ingestable. Adjust, remove parts that you aren't actually relying on.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/sbom-web.pdf#5" class="slide">Slide 5 of 7</i-slide>
+<div>
+<p data-start="308.26"><cite>Jan:</cite> And like I already foreshadowed, the reason why we should have SBOM for web deliverables in the first place, to get knowledge about the things that we are actually shipping to web browsers.</p>
+<p data-start="326.68"><cite>Jan:</cite> Remember the software that you are shipping is not run on your machine. It's not in the back-end. It's the front-end. It's the client-facing part that's run on client hardware, client software. Maybe in sandboxes somehow.</p>
+<p data-start="342.89"><cite>Jan:</cite> But if you have any security issues in that thing, it might not only steal the cookie from your clients, so that credentials are leaked, but it could even break the web browser sandboxes, or modify web requests, that you might not be aware of even. The idea is to get the list of ingredients of your software that you are actually shipping and run an analysis on it like issue or security to find known security issues with those components that you ship, that you actually depended on somehow. Or just to identify that you need to get rid of some supply chain risks. For example, you fetched your whole component set from a public source, maybe it's trusted today, what happens if this trusted source gets tampered with, and you're not actually shipping from it the components that you were using in the past but modified versions in the future? So, to get this information. you could just use your SBOM looked at up, run tools on. It might be safe. So this is posture that you're interested in as the developer of your deliverables.</p>
+<p data-start="438.26"><cite>Jan:</cite> But as the person that actually runs the code in their own browsers, they might have an interest on that information, too.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/sbom-web.pdf#7" class="slide">Slide 7 of 7</i-slide>
+<div>
+<p data-start="450.89"><cite>Jan:</cite> There comes the question, how does a client site... (where's my slide for that? It's gone)</p>
+<p data-start="464.14"><cite>Jan:</cite> There's the question, how does the client site receive an SBOM? This will be the matter of the next upcoming talk. But for now... (and there it is!) here. The next talk will tell us what an SBOM actually... how it could be fetched.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/sbom-web.pdf#6" class="slide">Slide 6 of 7</i-slide>
+<div>
+<p data-start="491.97"><cite>Jan:</cite> For now the question, how an SBOM could be generated? You could write that by hand. You might just use a tool if you're using a tool to generate your deliverables in the first place, why not use tool like the CycloneDX webpack plugin for example? That's a tool that hooks into one of these deliverable generators and generates an SBOM alongside.</p>
+<p data-start="522.26"><cite>Jan:</cite> That's probably it. Questions from you?</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

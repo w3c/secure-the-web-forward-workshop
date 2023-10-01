@@ -1,0 +1,96 @@
+---
+title: Establish Standards to Support Web Access to SBOM Data - Gary O'Neall - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Establish Standards to Support Web Access to SBOM Data</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Gary O'Neall</strong><br/>
+      Position paper: <a href="../papers.html#sbom-standards">Establish Standards to Support Web Access to SBOM Data</a><br/>
+      Slides: <a href="https://docs.google.com/presentation/d/1kHe-PNTMgSwEIgLE5rvjb0cGhLl3PnU9647lNnAfpzY/edit">HTML</a> | <a href="slides/sbom-standards.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Establish Standards to Support Web Access to SBOM Data" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/732fc056aa23710bf30544435c9c021d/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/sbom-standards.pdf#1" class="slide">Slide 1 of 11</i-slide>
+<div>
+<p data-start="6.59"><cite>Gary:</cite> Just by way of introduction, I've been involved in SBOMs for more than 10 years. I'm one of the co-leads for the SPDX SBOM standard. A format for SBOM similar to CycloneDX. And I just wanted to thank Jan for teeing up the definition of SBOM. That's one of the things I was thinking I'd have to cover. But I think you covered that extremely well. I'm going to just jump in to a couple of thoughts on web access to SBOM data.</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/sbom-standards.pdf#2" class="slide">Slide 2 of 11</i-slide>
+<div>
+<p data-start="40.29"><cite>Gary:</cite> I wanted to give you a little bit of context and background on the current state of SBOM standardization. And one of the things that I've been thinking about for a number of years is, how do we make SBOM data access ubiquitous, easy to access. Down to the browser level is one really good example.</p>
+<p data-start="59.1"><cite>Gary:</cite> But wherever you are in the consumption or production of software, how do we make it easy to get accurate verifiable data about the software that you're using? And I kind of broke it down into 2 different parts, the network access protocols. How do you discover? How do you securely access it? And once you get it, you need to have kind of a common vocabulary, and I have a couple of examples of existing work in this area, but more work needs to be done. One of my primary reasons to bring this up to this particular group is, I want to find out if there's interest in perhaps working on this either or both of these problems and moving this forward.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/sbom-standards.pdf#3" class="slide">Slide 3 of 11</i-slide>
+<div>
+<p data-start="101.001"><cite>Gary:</cite> A little bit about the current state. CISA and NTIA refer to 3 different SBOM standards in their documentation. I think that the SPDX and CycloneDX are the 2 most popular ones currently.</p>
+<p data-start="115.93"><cite>Gary:</cite> They're primarily focused on metadata exchange data about the products and the dependencies. We do have some collaboration going on between the SBOM standards about every 6 months. I meet up with some folks from the CycloneDX community, and we kind of make sure that we can interoperate on the core elements. Anyway, the most used elements.</p>
+<p data-start="138.7"><cite>Gary:</cite> That's something I definitely would encourage continuing on both standards to make sure that it's easy to interoperate, and we don't cause too much pain to people that have to use. Both of these standards. Efforts are underway within... There's an OpenSSF SBOM everywhere group that I participate in. They're creating a lot of best practices around the discovery of SBOM artifacts, how to name them, how to store them and all some very, very good work.</p>
+<p data-start="166.87"><cite>Gary:</cite> There's also a CISA tooling work group that's making some good progress in that area as well. However, currently, I don't believe, and I'd love to be corrected and told I'm wrong on this, but there's no standard protocol for SBOM discovery and access.</p>
+<p data-start="181.69"><cite>Gary:</cite> The other issue that we're we've run into is the granularity of SBOM data is coarse (I spelled it wrong), rather coarse, as in large chunks of data, and that can cause problems that I'll explain a little bit later.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/sbom-standards.pdf#4" class="slide">Slide 4 of 11</i-slide>
+<div>
+<p data-start="198.18"><cite>Gary:</cite> There's a little bit of work to be done. Here's one thing I just wanted to describe where we are today, and a kind of a possible future for SBOM access. Today, we have a number of producers of software, whether they're projects and open source commercial software providers. And we actually are getting... I've been seeing some surveys lately, I'm surprised at how much adoption we are getting in SBOMs. Of course, government regulations is a good catalyst for that. But we are seeing a lot of these documents being produced.</p>
+<p data-start="230.52"><cite>Gary:</cite> Each of these are somewhat independent documents and they have a huge amount of overlapping data, because they describe their entire dependency tree. And in that description of the dependency tree, they're basically copying the same data over and over and over again. And there's, as I mentioned before, there's kind of no standard discovery protocol to be for the consumers to be able to find the data. When I think about the future one of the things I would like to do, and we're actually actively working on this at our next release of SPDX, which has much more granular access to the SBOM data. So rather than having everything duplicated in these SBOM documents, basically being able to address and reference and validate the integrity of what we call elements and an element may be a package. It may be a file it may be down to even a small snippet of code and reference rather than copy. It solves a lot of problems we have of duplication and inconsistencies in the data. And then the second aspect is having some kind of a discovery protocol.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/sbom-standards.pdf#5" class="slide">Slide 5 of 11</i-slide>
+<div>
+<p data-start="294.64"><cite>Gary:</cite> So in terms of discussion. I guess this just kind of repeats what I just said. Reference, not copy element metadata. Oh, this one I forget to mention, which I think is important, is that the element metadata... the closer we can get it to the originator, the actual thing that's being produced, the more accurate it's going to be. Or at least you know where the where the issues are. Right now we have a situation where a lot of SBOM are generated by SEA analysis tools, and they're not necessarily perfect. So if we had the originator say, Okay, here's what I have. Here's what I'm producing, and then the dependencies reference that information, we'll have a much more trustworthy and validatable SBOM in the world. And then, of course, the last one is only transfer what you need, more efficient for that.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/sbom-standards.pdf#6" class="slide">Slide 6 of 11</i-slide>
+<div>
+<p data-start="344.09"><cite>Gary:</cite> I broke this into almost 2 different proposals. One is working on the protocols. This is, by the way, not my area of expertise. But I do work with some folks that are pretty good in this area. And I did wanna reference one particular protocol that's out there already. It's going through the IETF process right now, it's a pretty close to being accepted as RFC9472.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/sbom-standards.pdf#7" class="slide">Slide 7 of 11</i-slide>
+<div>
+<p data-start="369.07"><cite>Gary:</cite> And it basically... The nice thing about this is it's somewhat agnostic to the format. It looks at the mime type of what's being produced. And it's just a protocol for discovery all the way down to the devices. So if you have a hardware device on the Internet, think Internet of things, or it could be a piece of software on the Internet, it supports discovery of not only the SBOM information, but the vulnerability information associated with that as well.</p>
+<p data-start="398.05"><cite>Gary:</cite> And the only issue is that this is really applicable for the end user, the end devices. It is not really as applicable if you're in the middle of the software supply chain. There are 2 other protocols that I've been made aware of after I started pulling this information together, but they're very early in the proposal phase.</p>
+<p data-start="422.91"><cite>Gary:</cite> You guys may know of more more work in this area than me like I mentioned. It's not my area of expertise. So here's a few different questions. I have for the group is, does it make sense to create a protocol?</p>
+</div>
+
+</div><div id="ts-8"><i-slide src="slides/sbom-standards.pdf#8" class="slide">Slide 8 of 11</i-slide>
+<div>
+<p data-start="435.72"><cite>Gary:</cite> I would say, not for just document discovery, but for element discovery that allows for us to be able to find and pull some of this SBOM information together. Perhaps down to the actual browser, as we were talking about a little earlier. And if it does make sense, who's interested? Now, the alternative to this discovery mechanism is just to have some kind of a global registry. And this is kind of what we're doing today.</p>
+<p data-start="460.32"><cite>Gary:</cite> In fact, we have lots and lots of mobile registries. Usually the, where the software delivery artifacts are stored, the repositories of code, is where the SBOM are stored as well. And of course the challenge with that is, there's a lot of them, and there's no automated discovery of that. But that is an alternative to solve the same kind of a problem.</p>
+</div>
+
+</div><div id="ts-9"><i-slide src="slides/sbom-standards.pdf#9" class="slide">Slide 9 of 11</i-slide>
+<div>
+<p data-start="482.53"><cite>Gary:</cite> Talk a little bit about, I think, the other half of the problem is, once we have the protocol to find and communicate, we need to have a common vocabulary.</p>
+</div>
+
+</div><div id="ts-10"><i-slide src="slides/sbom-standards.pdf#10" class="slide">Slide 10 of 11</i-slide>
+<div>
+<p data-start="491.18"><cite>Gary:</cite> And we've been thinking about this actually, for since the start of, having the SBOM data specified in a way that supports linked data. If you're not familiar with linked data is just a way of being able... to link the data about SBOM across the Internet in a verifiable, reliable way. And there's a couple of standards out there to support that. JSON-LD is a very popular relatively, I'd say, relatively easy to use. And then RDF is a W3C Standard that supports linked data for this. Within the SPDX community, we've been working on this, actually, from the very beginning.</p>
+<p data-start="533.31"><cite>Gary:</cite> We are going through a fairly major revision of it. Primarily, we used to use RDF to communicate at the document level. With 3.0, we're making things available down to a very small element level, which I think, helps promote the vision that I mentioned earlier. And it is a breaking change. It is probably the primary reason for the breaking change. But what's been driving that is the scalability of SBOM. We have some contributors to the spec that are doing massive systems with millions and millions of packages at a very, very high scale, and they need this kind of granularity to be able to make those systems work. So that work, I think we can leverage to make this scalable at Internet scale as well.</p>
+</div>
+
+</div><div id="ts-11"><i-slide src="slides/sbom-standards.pdf#11" class="slide">Slide 11 of 11</i-slide>
+<div>
+<p data-start="586.32"><cite>Gary:</cite> There's a little bit more information on this in terms of where the ontology is stored in the standards that it's in. And if you're interested in that, we can certainly discuss that a little bit more. So, the questions around the vocabulary is, first of all, should we have a common vocabulary for SBOM? Is this a problem we're solving? Do we want to use some kind of a formal ontology language to describe this? There are a few standards out there that I'm particularly favorable to. But there may be alternatives as well.</p>
+<p data-start="616.72"><cite>Gary:</cite> And should we start working on an ontology? And I will say that there has been some really good work on the in the CycloneDX community, describing how the 2 vocabularies work... how they're similar vocabularies. This isn't necessarily an exclusive SPDX proposal. We can also be able to correlate that to some of the similar terms that are being used in some of the other standards. Just something to tee up something. If you're interested in that, I would say, this is the one I would definitely be interested, and perhaps a little bit more qualified to contribute to. It is something that we're working on in SPDX, but I'd be happy to broaden that out to a larger and more different standards communities, if there's interest. So I believe that is it. I will stop sharing and</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

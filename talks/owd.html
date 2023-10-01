@@ -1,0 +1,105 @@
+---
+title: Documentation for web security education - Florian Scholz - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Documentation for web security education</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Florian Scholz</strong><br/>
+      Position paper: <a href="../papers.html#owd">Documentation for web security education</a><br/>
+      Slides: <a href="https://florianscholz.com/security-docs-workshop/">HTML</a> | <a href="slides/owd.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Documentation for web security education" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/0b1fb509f2475bf02497bcff24d38bc5/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/owd.pdf#1" class="slide">Slide 1 of 13</i-slide>
+<div>
+<p data-start="8.08"><cite>Florian:</cite> I work for Open Web Docs.</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/owd.pdf#2" class="slide">Slide 2 of 13</i-slide>
+<div>
+<p data-start="12.09"><cite>Florian:</cite> And I'm very happy to hear that you're all very interested in documentation and making that better. I'm a technical writer at Open Web Docs. We are a nonprofit organization and open collective. Our work is funded by donations from organizations and individuals.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/owd.pdf#3" class="slide">Slide 3 of 13</i-slide>
+<div>
+<p data-start="33"><cite>Florian:</cite> We mostly contribute to MDN, which you all probably know and use on a daily basis. It's the number one resource for developers to find out about web technologies.</p>
+<p data-start="47.93"><cite>Florian:</cite> What we do is we contribute to the underlying content. That's the MDN Content Repository, and then in browser-compat-data as well that collects all the browser compat data for those pages. And so we have a lot of day-to-day maintenance on keeping this website up to date. But we also also do project work. I'm thinking, for this group, for this workshop, that there might be a potential new project for web security docs.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/owd.pdf#4" class="slide">Slide 4 of 13</i-slide>
+<div>
+<p data-start="85.2"><cite>Florian:</cite> Why I'm really here is I would love to chat with some folks that know a lot about security, about defining requirements for documentation, for security. Maybe even creating a new content outline. Also reviewing security talks because we, as technical writers, write about a lot of things on the web platform, but we don't necessarily have all the expertise and security field. But I'm sure lot of you do. And then we would like to understand more the developer needs, and the survey that François has shared for this workshop, and also shown a bit on the first day, was very useful as a first insight.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/owd.pdf#5" class="slide">Slide 5 of 13</i-slide>
+<div>
+<p data-start="131.69"><cite>Florian:</cite> To get us a bit into what's currently on MDN, I took a bit of time to assess and look at, if I'm curious about security and I would go on MDN, what would I find? And there is a landing page on the Web security. It has 19 pages. They're not random. That's the usual topics, you know. Same origin. CSP, CORS, those kind of things.</p>
+<p data-start="166.09"><cite>Florian:</cite> We also, I think, a while ago created a CORS error reference, because people really struggle with CORS, and they need to understand all the errors that are thrown at them in the console. And so for each of those errors we wrote a reference. And we have, like miscellaneous security related dogs, glossary pages, what is man in the middle, what is CSS and stuff.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/owd.pdf#6" class="slide">Slide 6 of 13</i-slide>
+<div>
+<p data-start="190.12"><cite>Florian:</cite> But this is all pretty disorganized. What MDN traditionally is really good at is reference docs, and it has to do with the fact that whenever we ship yet another new web platform feature, we document it. So we create reference docs. We write about the latest CSP directive. We write about SRI and all these web platform features. but we don't necessarily organize them well. There's no navigation right now on this security landing page. The navigation is basically an alphabetical list of all the things that you could learn about security. There's no user journey at all. I couldn't find a security tutorial and there's no mapping to developer needs. Those that we have learned from the survey that was run on MDN. Or from other developer needs that we know of.</p>
+<p data-start="250.17"><cite>Florian:</cite> And I can tell you that the Security docs are not alone. There's other documentation sets that suffer from the same problem. And recently, we've done work, for example, on the performance docs, but also on the progressive web app docs to make that better.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/owd.pdf#7" class="slide">Slide 7 of 13</i-slide>
+<div>
+<p data-start="268.72"><cite>Florian:</cite> So how do we make this better? For that I would like to introduce a diagram of the system that was first introduced by Daniele Procida and was published on Divio and diataxis.fr. So this is not something that I've invented but it's a really good way to think about documentation. And this is based on the research that there are basically 2 types of developers. The one is the concept driven developer and the other is the action driven developer. If you look at this diagram, on the left side, you have tutorials and explanations. So you are... and don't worry, you don't have to be either the concept driven or the action driven developer, I can tell you. Sometimes you are the other, sometimes you're the one, sometimes you are the other.</p>
+<p data-start="327.54"><cite>Florian:</cite> Let's say you're a concept driven developer, you're studying, then you spend your time on pages like tutorials and explanations, you're on the left side of this diagram. You want to learn about a new thing. You want to understand the theoretical concepts. You you want to be taken by hand in a tutorial, and you want to go from not knowing anything to completing a project, and then knowing something, and you will be taken by the hand by the author of the tutorial. Or you want to understand concepts like the Browser security model, same origin, or whatever. And then you likely want to read an explanation.</p>
+<p data-start="375.68"><cite>Florian:</cite> On the other hand, you might not be studying right now. You want to get work done, and for that you need other sorts of documentation. You need how to pages, and you need reference pages. So how-to is, I almost think about those when I think about the Stack Overflow developers. So how to do something, then you mostly land on stack overflow. But we've also got better on MDN to write more practical, down to the task, that's at hand, and then write an how-to for that. And then, as you all know, the classic reference page that is also very action oriented. You exactly know what you want. You know exactly which methods or feature you want to use, but you need all the information about how this works again, what the parameters are, and so forth.</p>
+</div>
+
+</div><div id="ts-8"><i-slide src="slides/owd.pdf#8" class="slide">Slide 8 of 13</i-slide>
+<div>
+<p data-start="435.87"><cite>Florian:</cite> I looked at the survey that was run on MDN. And I saw that we had very challenging, and somewhat challenging answers on some of the topics that were given in the survey. And I've tried to put them into the categories of these 4 quadrants of the system.</p>
+<p data-start="457.93"><cite>Florian:</cite> I think it's quite telling that there wasn't really anything for reference because, there, reference articles exist. But, for example, understanding security threats, and understanding the browser security model. We don't really have guides for that. And that to me was quite telling that we should, in fact, think about all these other three types of pages and create them.</p>
+</div>
+
+</div><div id="ts-9"><i-slide src="slides/owd.pdf#9" class="slide">Slide 9 of 13</i-slide>
+<div>
+<p data-start="485.23"><cite>Florian:</cite> And then I also did a quick exercise on thinking about potential new content structures and articles for all of these 4 quadrants. And of course this is only me, not knowing all that much about security. But I quickly came up with quite a few things.</p>
+<p data-start="505.58"><cite>Florian:</cite> I want to briefly talk about the how-tos, because I think they are quite important, they're probably the core of this. And I think there are probably 3 different categories of how-tos that we should think about.</p>
+<p data-start="519.58"><cite>Florian:</cite> One is the classic how-to use a web platform feature, if you know what you want to use, then that's pretty straightforward to write. And we just need to know what are all of the web platform features. Another category is how-to protect against an attack. And then here, you know. to write such articles, I already need to know what are all the different attacks, so definitely here I would need a lot more help from security experts to tell me exactly what sorts of XSS and other attacks exist and how to protect against them.</p>
+<p data-start="557.31"><cite>Florian:</cite> And then even more complicated is, if you want to make a tutorial and explain how to make a thing secure, because that requires web platform features that make the thing secure, but that also requires to protect against attacks. That's kind of the most viable. But also, I guess, the most complex how-to.</p>
+</div>
+
+</div><div id="ts-10"><i-slide src="slides/owd.pdf#10" class="slide">Slide 10 of 13</i-slide>
+<div>
+<p data-start="581.02"><cite>Florian:</cite> So what can we do as Open Web Docs to help you with? We can surely organize those docs. As I've shown you in the 4 quadrants, we have some clue about how to go about educating people about things. We can also write those docs, and we can help maintaining those docs.</p>
+</div>
+
+</div><div id="ts-11"><i-slide src="slides/owd.pdf#11" class="slide">Slide 11 of 13</i-slide>
+<div>
+<p data-start="601.98"><cite>Florian:</cite> But what we really need from security people like all of you, is review and advice and help on creating content outlines. And we also need insights into what developers don't understand.</p>
+</div>
+
+</div><div id="ts-12"><i-slide src="slides/owd.pdf#12" class="slide">Slide 12 of 13</i-slide>
+<div>
+<p data-start="618.52"><cite>Florian:</cite> For me, the thing that I want to bring up in this workshop is: should we have a follow up workshop where we discuss in more details what sorts of documentation we need and we should create on sites like MDN? Could we maybe even collectively, create a content outline that addresses all these 4 quadrants that I've presented?</p>
+<p data-start="644.98"><cite>Florian:</cite> Then, finally, I think the first survey was excellent to get an initial insight into what are the misunderstandings for developers. But maybe we need even more. Maybe we need user interviews to understand how exactly the developers are struggling with web security topics.</p>
+</div>
+
+</div><div id="ts-13"><i-slide src="slides/owd.pdf#13" class="slide">Slide 13 of 13</i-slide>
+<div>
+<p data-start="666.51"><cite>Florian:</cite> And that's it. Thanks.</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

@@ -1,0 +1,121 @@
+---
+title: Applying Hardened Javascript to supply chain security for a proactive approach - Zbyszek Tenerowicz - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Applying Hardened Javascript to supply chain security for a proactive approach</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Zbyszek Tenerowicz</strong><br/>
+      Position paper: <a href="../papers.html#hardened-supply-chain">Applying Hardened Javascript to supply chain security for a proactive approach</a><br/>
+      Slides: <a href="https://naugtur.pl/pres3/sec-web-forward/">HTML</a> | <a href="slides/hardened-supply-chain.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Applying Hardened Javascript to supply chain security for a proactive approach" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/a9f3457ce01c224da573d0dbea69058c/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/hardened-supply-chain.pdf#1" class="slide">Slide 1 of 18</i-slide>
+<div>
+<p data-start="5.6"><cite>Zb:</cite> Hello! I'm Zb also known as naugtur. If you type naugtur into any text field and anything pops up that's likely gonna be about me. And I'm going to represent the project called LavaMoat. It's an open source tool; but I'm getting ahead of myself.</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/hardened-supply-chain.pdf#2" class="slide">Slide 2 of 18</i-slide>
+<div>
+<p data-start="22.5"><cite>Zb:</cite> Let's start with a problem statement.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/hardened-supply-chain.pdf#3" class="slide">Slide 3 of 18</i-slide>
+<div>
+<p data-start="25.1"><cite>Zb:</cite> Early on, we had computers. And we would type programs into those computers and run these programs. And everything was fine.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/hardened-supply-chain.pdf#4" class="slide">Slide 4 of 18</i-slide>
+<div>
+<p data-start="34"><cite>Zb:</cite> And then we started having networks of computers. And we discovered that, hey? Someone's in my network, and I don't trust them.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/hardened-supply-chain.pdf#5" class="slide">Slide 5 of 18</i-slide>
+<div>
+<p data-start="42"><cite>Zb:</cite> What do I do about it. So we invented network security tools like firewalls.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/hardened-supply-chain.pdf#6" class="slide">Slide 6 of 18</i-slide>
+<div>
+<p data-start="47.31"><cite>Zb:</cite> and after that we have browsers, and we have multiple pages that could run in the same browser which, ended up in the same situation again. There's someone in my browser, and I don't trust them. So we invented same origin policy to prevent those situations.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/hardened-supply-chain.pdf#7" class="slide">Slide 7 of 18</i-slide>
+<div>
+<p data-start="64.13"><cite>Zb:</cite> Same origin policy. I heard it's debatable, but it's been quite successful, to date, to prevent sites interacting with each other in malicious ways, with very few exceptions. And then what happened next is we started composing software. We started composing software as multiple scripts being loaded from multiple sources onto the same page</p>
+</div>
+
+</div><div id="ts-8"><i-slide src="slides/hardened-supply-chain.pdf#8" class="slide">Slide 8 of 18</i-slide>
+<div>
+<p data-start="89.77"><cite>Zb:</cite> and then also installing packages from Npm. And others and bundling them into one script that's running in the page. So we ended up in a similar situation again. There's someone in my code base, and I don't trust them.</p>
+</div>
+
+</div><div id="ts-9"><i-slide src="slides/hardened-supply-chain.pdf#9" class="slide">Slide 9 of 18</i-slide>
+<div>
+<p data-start="105.41"><cite>Zb:</cite> And we invented hoping for the best. That's not entirely true. But pretty factual if you worked on projects that were building front end out of components from npm.</p>
+</div>
+
+</div><div id="ts-10"><i-slide src="slides/hardened-supply-chain.pdf#10" class="slide">Slide 10 of 18</i-slide>
+<div>
+<p data-start="120.61"><cite>Zb:</cite> what we actually need here is called fearless cooperation, so that multiple parties can cooperate for the result of the same program without having to fear each other. So with enough isolation or security guarantees that they can interact without being maliciously interacted with.</p>
+</div>
+
+</div><div id="ts-11"><i-slide src="slides/hardened-supply-chain.pdf#11" class="slide">Slide 11 of 18</i-slide>
+<div>
+<p data-start="148.61"><cite>Zb:</cite> The progress to date on the topic of handling situations where, within the same origin, we have multiple parties that need to somewhat be controlled starts with subresource integrity. We've got content security policy which can solve some of the issues that originate from using untrusted code in your page, in your origin, in your realm of the page. We've got Trusted Types that could potentially be used for that as well to some extent, and we've got hardened Javascript, which I'm going to talk about now.</p>
+</div>
+
+</div><div id="ts-12"><i-slide src="slides/hardened-supply-chain.pdf#12" class="slide">Slide 12 of 18</i-slide>
+<div>
+<p data-start="187.62"><cite>Zb:</cite> Hardened Javascript, is a TD39 proposal. It's the brand name for the proposal. The actual proposal introduces a few things. One of them is module virtualization. So module loading, virtualization. So we can implement your own code for what happens when someone imports a module. And that would be part of the language. Another thing is evaluators where you can evaluate some code with the context that you provide, which means you decide, what is the global object which globals are available, and this exists as an implementation as SES shim and it's being used in LavaMoat, which is what brought me here in the first place. So what what is happening, and hopefully gets into Javascript, the language, soon enough, is that we have the possibility to isolate code from an untrusted party within the same realm. So within the same thread with the identity of global prototypes being the same. Under some circumstances which come from Javascript being hardened, these things can work together while being isolated.</p>
+</div>
+
+</div><div id="ts-13"><i-slide src="slides/hardened-supply-chain.pdf#13" class="slide">Slide 13 of 18</i-slide>
+<div>
+<p data-start="280.8"><cite>Zb:</cite> So why am I still here talking about it? We have compartment in which we can isolate potentially malicious code, something we don't want to trust. What is the problem? First off, let's look at how it's even possible.</p>
+</div>
+
+</div><div id="ts-14"><i-slide src="slides/hardened-supply-chain.pdf#14" class="slide">Slide 14 of 18</i-slide>
+<div>
+<p data-start="300.08"><cite>Zb:</cite> We're talking in the context of W3C, Javascript is standardized in Ecma. Add Conway's law, and you get good separation between the language itself and every powerful API in the language. So any power is only reachable through scope or imports and compartment controls those.</p>
+</div>
+
+</div><div id="ts-15"><i-slide src="slides/hardened-supply-chain.pdf#15" class="slide">Slide 15 of 18</i-slide>
+<div>
+<p data-start="321.33"><cite>Zb:</cite> So what we do is we trickle in the selected globals into a compartment, and we can decide that a certain package in our dependencies will not have access to fetch, or any network whatsoever. and that works, that works already with the shim. By the way, there's 2 main issues to bring up here.</p>
+</div>
+
+</div><div id="ts-16"><i-slide src="slides/hardened-supply-chain.pdf#16" class="slide">Slide 16 of 18</i-slide>
+<div>
+<p data-start="344.39"><cite>Zb:</cite> One of them is separate rounds. So spinning up a new same origin, window or frame is problematic, and that's what Gal is going to talk about. And also anything that gets access to a DOM node pretty much gets access to all the globals because of how the DOM API is structured, you can always go up until you reach the main document, and it's window. And there's a lot of window references and ways to get window reference in there.</p>
+</div>
+
+</div><div id="ts-17"><i-slide src="slides/hardened-supply-chain.pdf#17" class="slide">Slide 17 of 18</i-slide>
+<div>
+<p data-start="378.23"><cite>Zb:</cite> So we're not done yet with the protections. Going back to problem statement, what I'm here to bring up is that, while TC39 is working on hardening Javascript, we could in parallel look into providing APIs or configurations or features that would let applications work in the browser without giving the software means to escape the compartment. Any access to DOM leaks globalThis, that's one of the problems.</p>
+<p data-start="413.66"><cite>Zb:</cite> Compartment depends on evaluators or bundling, so either you bundle the whole thing and create enough wrapping in there, or you have to have evaluators which are often banned by content security policy. So we should probably look into new directives and content security policy to allow selective use of evaluators for creating confinement in the page. So maybe strict-dynamic, but for eval. And then same origin realms. Not tomorrow. Today. In the next presentation.</p>
+</div>
+
+</div><div id="ts-18"><i-slide src="slides/hardened-supply-chain.pdf#18" class="slide">Slide 18 of 18</i-slide>
+<div>
+<p data-start="457.001"><cite>Zb:</cite> The call to action here is: how can we support the users of Hardened Javascript in the browser so that they can maintain confinement while building UIs? Thank you.</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

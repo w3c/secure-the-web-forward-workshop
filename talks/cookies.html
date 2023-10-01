@@ -1,0 +1,140 @@
+---
+title: Establishing a robust long-term security model for cookies on the web - Artur Janc - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>Establishing a robust long-term security model for cookies on the web</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>Artur Janc</strong><br/>
+      Position paper: <a href="../papers.html#cookies">Establishing a robust long-term security model for cookies on the web</a><br/>
+      Slides: <a href="slides/cookies.pdf">PDF</a>
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="Establishing a robust long-term security model for cookies on the web" src="https://customer-0kix77mxh2zzzae0.cloudflarestream.com/b6300d44c44c97e4f16842d1602cff64/iframe"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      <div id="ts-1"><i-slide src="slides/cookies.pdf#1" class="slide">Slide 1 of 19</i-slide>
+<div>
+<p data-start="5.06"><cite>Artur Janc:</cite> I'm Artur, I am an information security engineer and the team meet for web security at Google. I've been at Google for a fairly long time, 12-13 years now, and I like the web. To me, it's it's a very interesting ecosystem, and I'm trying to help make it a little bit better.</p>
+<p data-start="27.79"><cite>Artur Janc:</cite> I have to say I'm a little bit self-conscious, because my talk is different in kind than the talks we've had in the workshop so far, to the extent that I think, a lot of the focus that we've had in the SBOM presentations yesterday, and the talks today were about protecting yourself or your application from things that you legitimately want to load: third party components that you compiled in or loaded runtime, and trying to limit their capabilities, or at least surface them so that you can fix them in some way, if need be. This is a problem that, I will not publicly claim that this is a problem that Google doesn't have, because obviously, we we do have a similar concerns, but because, of the scale and resources, I think it's been a little bit easier for us to to grapple with this problem. But what we do have, and the concerns that we see across our ecosystem is tens, if not hundreds of thousands of developers writing code.</p>
+<p data-start="86.71"><cite>Artur Janc:</cite> And whenever you write code on a foundation that makes it easy to introduce vulnerabilities, you are going to have a lot of vulnerabilities. So in a way, I see the Google ecosystem as a bit of a microcosm of the broader web. Of course, with the recognition that we do have more resources for security and engineering, best practices and whatnot. But I was hoping to talk a little bit about whether what we have learned in our work to secure the thousands of applications at Google to help figure out better defaults and better built-in models for certain core aspects of the web platform.</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/cookies.pdf#2" class="slide">Slide 2 of 19</i-slide>
+<div>
+<p data-start="124.56"><cite>Artur Janc:</cite> So I will get the cookies at some point in the next 15 min. But I did want to start with a bit of a broader view, just because, I know we are all geeks, and we are interested in cookies, but at some point it's also useful to talk about the underlying problem that we're solving.</p>
+<p data-start="144.14"><cite>Artur Janc:</cite> The first thing that I ask myself when I saw this workshop proposal and I started thinking about about my talk is the general idea of how do you secure something for the long term? And the one approach that we have to pursue, no matter what we do, is to improve security processes, build additional security features. We talked about CSP, we need to have opt-in mechanisms that allow developers to extend additional security guarantees to their code. We have to get better at educating developers, detecting vulnerabilities, patching vulnerabilities. All of that is necessary for the ecosystem.</p>
+<p data-start="189.32"><cite>Artur Janc:</cite> But, if there's anything that's better than making progress on this, is to eliminate the vulnerabilities in the first place. If we can engineer, our ecosystem, or the underlying platform in a way that will not make it vulnerable to certain classes of problems, then we will not have to deal with all these other things. We don't have to teach developers about doing things properly, because at least for that particular problem. It will not exist, so developers will not have to learn about how to afford.</p>
+<p data-start="221.93"><cite>Artur Janc:</cite> There are good examples of this in technology, right outside of the web, for example, if you build things using a language that is not memory safe, then you're going to add memory corruption vulnerabilities. But if you build in a memory safe language that consistently enforces memory safety, then you'll be free from this entire class of bugs that we've built your huge ecosystems to detect and fix, with fuzzing and mitigations, and all of that. It's nice to not have this problem, and this also applies to other languages like TypeScript, for example. It makes it pretty much impossible to have prototype pollution lines which you can have in plain Javascript. And similarly, if you use Go, you're going to have less concurrency problems than if you use other languages just because of the language design.</p>
+<p data-start="270.61"><cite>Artur Janc:</cite> And this also applies to things that are kind of more specific than languages. For example, at the framework level you can have ways to query the database, but will make it impossible to have SQL injection.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/cookies.pdf#3" class="slide">Slide 3 of 19</i-slide>
+<div>
+<p data-start="283.23"><cite>Artur Janc:</cite> And there's many other examples of this. So the question is, how does that translate to the web? If we focus on improving the security of the web ecosystem in the long term. Can we apply similar principles to improve the defaults to the kind of guts of the platform. And of course this is challenging because the web has not been designed as an application platform. We are very worried about backwards incompatibility. We don't want to break sites that have been on the web for the past 20 years, or even longer, and do things in the platform that will just prevent users who have been accessing these sites for a long time from being able to use them. So we're very averse to all breakages.</p>
+<p data-start="334.84"><cite>Artur Janc:</cite> But we've also, over the years been able to pull off a lot of backwards and compatible changes in the name of security. So, for example, right now browsers are very vocal about discouraging HTTP and unencrypted transports. We've gotten rid of Flash which made some users unhappy. There was a great a lot of great content on the web built in flash, but the dangers that it brought to the web platform were arguably worth that pain. And there's also a lot of smaller deprecations happening in browsers all the time to improve the defaults, to remove some of the foot guns that otherwise developers would come across and make their applications vulnerable to certain kinds of bugs.</p>
+<p data-start="378.55"><cite>Artur Janc:</cite> And the idea for what I'll talk about in my talk is to understand which of the facets of the web, and make it likely for developers to introduce vulnerabilities and figure out whether we can fix them. And of course, just to give a bit of a spoiler, cookies are one of the things that we that we would like to change the behavior of to improve the platform.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/cookies.pdf#4" class="slide">Slide 4 of 19</i-slide>
+<div>
+<p data-start="401.41"><cite>Artur Janc:</cite> So if you look at the data from, this is fairly old data which I know is not great, but just trying to illustrate the principle. A few years ago we looked at the, I think it was thousands of vulnerabilities that we received via our vulnerability reward program. And there are obviously many vulnerabilities that were not web platform bugs, also web application bugs often so servers being vulnerable to logic issues, mobile apps and so on. But a large chunk of the security problems in the Google ecosystem was caused by the unsafety of the web platform, and that led to XSS, and also a lot of what I would call isolation vulnerabilities like cross-site request for clickjack. So to dig, maybe more deeply into those.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/cookies.pdf#5" class="slide">Slide 5 of 19</i-slide>
+<div>
+<p data-start="450.12"><cite>Artur Janc:</cite> I will make a bold claim that the bulk of web client-side security vulnerabilities fall into these 2 categories.</p>
+<p data-start="459.82"><cite>Artur Janc:</cite> So one is injections. We all know it by the name of XSS. There's different kinds of XSS, Dom Base reflected. You can slice and dice the problem class in many ways. But, in the end, if you have an injection, it often means that someone else will be able to execute Javascript in the code of your application and access all of the data within your origin, because, as we learn from previous talks, the same origin policy underpinns most of web security.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/cookies.pdf#6" class="slide">Slide 6 of 19</i-slide>
+<div>
+<p data-start="489.91"><cite>Artur Janc:</cite> But I will not talk about that. I'll talk about the other class of vulnerabilities, which is, arguably more diverse. But just as interesting. And that is the area of isolation bypasses. And  just to try to maybe talk a little bit about the root cause of these bugs. The problem that we have on the web is that there are many</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/cookies.pdf#7" class="slide">Slide 7 of 19</i-slide>
+<div>
+<p data-start="517.54"><cite>Artur Janc:</cite> things that you can do in your application that seem very simple and legitimate and safe, but end up being security vulnerabilities, unless you, as a developer, are aware of the fact that you have to do something special to protect your application. For example, if you have a form, or if you have a button that triggers some state changing functionality. Or if you have in the third example, a Javascript response that includes some user data.</p>
+</div>
+
+</div><div id="ts-8"><i-slide src="slides/cookies.pdf#8" class="slide">Slide 8 of 19</i-slide>
+<div>
+<p data-start="546.86"><cite>Artur Janc:</cite> Or even functionality as simple as searching the user's data. All of them are by default vulnerabilities in your application unless you figure out how to protect your application. So, for example, if you have a form, but not pro, but do not protect it from a cross-site request forgery by using a CSRF token or the double submit Cookie, or one of these other core methods of preventing a cross-site request forgery.</p>
+<p data-start="575.25"><cite>Artur Janc:</cite> Someone else will be able to submit that form and trigger that state changing functionality in your application. Same thing with clickable UI elements. You can iframe them from an untrusted site by default and the user will think they're clicking on your own button but they're actually clicking on the button to delete their account in your app for example.</p>
+<p data-start="600.28"><cite>Artur Janc:</cite> And these other 2 patterns are similar. And the root cause,</p>
+</div>
+
+</div><div id="ts-9"><i-slide src="slides/cookies.pdf#9" class="slide">Slide 9 of 19</i-slide>
+<div>
+<p data-start="605.48"><cite>Artur Janc:</cite> arguably the root cause for all these vulnerability classes is the cookie model of the web. And this is the fact that cookies are obviously sent in first party context. If you have a same site or same origin resource it will be loaded with your cookies, but they're also sent in cross site. Third party context. So the browser attaches the cookie, in the default web model without the anti tracking and other cross-safe cookie protections, the browser will attach the cookie for the destination, regardless of the source of the request. So obviously, this is good for some things, but it also causes problems because it means that an evil website will be able to send requests with the user's cookies to a victim web server and confuse them in ways that will allow the attacker to attack the user and steal their secrets.</p>
+</div>
+
+</div><div id="ts-10"><i-slide src="slides/cookies.pdf#10" class="slide">Slide 10 of 19</i-slide>
+<div>
+<p data-start="660.27"><cite>Artur Janc:</cite> So my argument for for the next 7 min or so is that if we fix the cookie model we will also protect the web from these broad classes of vulnerabilities, and luckily for us, from a security perspective, there is a privacy focused effort by browser vendors over the past several years, started with Safari, then built by Firefox, now in the process of getting</p>
+</div>
+
+</div><div id="ts-11"><i-slide src="slides/cookies.pdf#11" class="slide">Slide 11 of 19</i-slide>
+<div>
+<p data-start="688.39"><cite>Artur Janc:</cite> finally rolled out in Chrome, which is meant to protect users from cross-site tracking by deprecating or phasing out third party cookies.</p>
+</div>
+
+</div><div id="ts-12"><i-slide src="slides/cookies.pdf#12" class="slide">Slide 12 of 19</i-slide>
+<div>
+<p data-start="698.33"><cite>Artur Janc:</cite> And this is something that there is agreement across all browsers, various sales of implementation. But everyone agrees that we have to get rid of third-party cookies.</p>
+</div>
+
+</div><div id="ts-13"><i-slide src="slides/cookies.pdf#13" class="slide">Slide 13 of 19</i-slide>
+<div>
+<p data-start="711.59"><cite>Artur Janc:</cite> that gives us an opportunity to think about, since we're doing these changes for privacy reasons, can we also make these changes in a way that will improve the web's security model?</p>
+<p data-start="724.56"><cite>Artur Janc:</cite> And just as a quick overview, the way anti-tracking has traditionally worked, the kind of simplest mode of anti-tracking is, if you have a third party component like an iframe, or if you load the third party image from a that is cross site, originally in the web's cookie model, the cookie would get attached, but anti-tracking prevents the cookie from being attached on the cross-site request. However, it does not prevent requests made to the top level site that the user sees in their in the browser window. So if you have a third party component like an app or something else, it can still trigger a cross site requests with cookies and attack the embedding application. And of course, we need to make the web safe, even in the event of embedding third party functionality, because that's the web security model. You have to be able to embed other widgets and sites and things, and make that not be a problem for your application.</p>
+</div>
+
+</div><div id="ts-14"><i-slide src="slides/cookies.pdf#14" class="slide">Slide 14 of 19</i-slide>
+<div>
+<p data-start="785.47"><cite>Artur Janc:</cite> So the second model for anti-tracking is based on same-site=lax cookies, and same-site=lax cookies are more strict, which is confusing, because there are same-site=strict cookies as well. But whatever. Same-site=lax cookies are attached on fewer requests than just in the anti-tracking cookie blocking model, because they also apply to requests sent by embedded widgets to the top level site.</p>
+</div>
+
+</div><div id="ts-15"><i-slide src="slides/cookies.pdf#15" class="slide">Slide 15 of 19</i-slide>
+<div>
+<p data-start="816.42"><cite>Artur Janc:</cite> To boil it down to the core question is, what do we want in the platform? From a security perspective, how should cookies behave to create a robust boundary in the platform that protects all web applications from cross site request forgery and similar vulnerabilities. First of all, cookies should not be sent on cross site requests by default, either for sub-resource requests, or for iframes. Second element is that we should not have cookies on post requests, even if they're top-level navigations.</p>
+<p data-start="854.97"><cite>Artur Janc:</cite> And if we do this, we get both the anti-tracking and the security benefits of the cookie model.</p>
+</div>
+
+</div><div id="ts-16"><i-slide src="slides/cookies.pdf#16" class="slide">Slide 16 of 19</i-slide>
+<div>
+<p data-start="864.26"><cite>Artur Janc:</cite> And of course, if you think about these properties, this is exactly what same-site=lax cookies already provide. So the argument I'm trying to make is... By the way, before getting to that part we also have to figure out a bunch of different details about how cookies work. There's a lot of divergence between browsers as to how cookies are attached, and when they are sent and when they aren't.</p>
+<p data-start="888.32"><cite>Artur Janc:</cite> So we're trying to go through trying to systematize it and make sure browsers align on the actual behaviors.</p>
+</div>
+
+</div><div id="ts-17"><i-slide src="slides/cookies.pdf#17" class="slide">Slide 17 of 19</i-slide>
+<div>
+<p data-start="894.85"><cite>Artur Janc:</cite> I'll maybe skip this slide. This is getting into the weeds of how the cookie models should actually work. I'm happy to get back to this, but I'll try to wrap up and just finish with the big picture again. What we would like to do is have a cookie model in the platform that</p>
+</div>
+
+</div><div id="ts-18"><i-slide src="slides/cookies.pdf#18" class="slide">Slide 18 of 19</i-slide>
+<div>
+<p data-start="917.47"><cite>Artur Janc:</cite> protects applications from cross-site request forgery and related bugs, which is based on same-site=lax cookies with some tweaks for compatibility which do not undermine the security properties of same-site=lax cookies. And if we do this my claim is that we will actually protect the web ecosystem creating robust boundaries, almost a guarantee for web applications that can't do anything to make themselves vulnerable to these long-standing classes. And the good thing is that all browsers are fairly close to that, just by virtue of the anti-tracking work that they're doing. I know this is challenging. Breaking things on the web is hard, it is why browser vendors are very hesitant to break more than what they absolutely need to get the privacy, anti-tracking guarantees that they're after.</p>
+</div>
+
+</div><div id="ts-19"><i-slide src="slides/cookies.pdf#19" class="slide">Slide 19 of 19</i-slide>
+<div>
+<p data-start="969.21"><cite>Artur Janc:</cite> But if we do this right, and if we also make this a security boundary, then we will really make life easier for developers in the future, by removing these classes of bugs that have plagued web applications for a couple of decades.</p>
+<p data-start="984.2"><cite>Artur Janc:</cite> And my final call to action that I would have for our group here is browser vendors hear a lot about breakages of the work that they're pursuing. So if they block third party cookies, and that breaks some sites or payment flows, or anything else, they will have angry developers yelling at them, saying: Hey, your browser sucks because it broke my website. And that website has been working properly for the last 15 years. They don't hear about the collateral damage of allowing these sources of insecurity to persist. So our job as security community is to tell browser vendors about how much pain this lack of safety causes to developers in the ecosystem itself to motivate them to work more in this area. And that is it. Sorry for running over.</p>
+</div>
+
+</div>
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>

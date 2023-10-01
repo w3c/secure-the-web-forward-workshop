@@ -1,4 +1,8 @@
 (function () {
+    // Note the need to initialize this right away for some reason
+    // (this cannot wait until the "load" event in particular)
+    const player = window.Stream ? window.Stream(document.getElementById('videoplayer')) : null;
+
     var createEl = function (tagName, attrs) {
         var anchor = document.createElement(tagName);
         Object.keys(attrs).forEach(function (key) {
@@ -94,6 +98,23 @@
                         }
                     }
                 }
+            }
+        }
+
+        if (window.Stream) {
+            const playParagraphs = [...document.querySelectorAll('p[data-start]')];
+            for (const p of playParagraphs) {
+                const button = document.createElement('button');
+                button.innerText = '▶️';
+                button.setAttribute('title', 'Play talk at this position');
+                p.insertBefore(button, p.firstChild);
+                button.addEventListener('click', evt => {
+                    if (player.paused) {
+                        player.play();
+                    }
+                    player.currentTime = parseFloat(p.getAttribute('data-start'));
+                    return true;
+                });
             }
         }
     });
