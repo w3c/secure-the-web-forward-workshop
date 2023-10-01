@@ -1,0 +1,29 @@
+---
+title: {{title}} - {{author}} - W3C Secure the Web Forward Workshop
+layout: subpage
+base: ../
+---
+  <section id="talk">
+    <h2>{{title}}</h2>
+
+    <p class="talkinfo">
+      Presenter: <strong>{{author}}</strong><br>
+      {{slidesLink}}
+    </p>
+
+    <section id="video">
+      <h3>Video</h3>
+      <div id="player">
+        <iframe id="videoplayer" title="{{{title}}}" src="{{embedUrl}}"
+          allow="accelerometer; giroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+      </div>
+    </section>
+
+    <section id="transcript">
+      <h3>Transcript</h3>
+      {{transcript}}
+    </section>
+  </section>
+  <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
