@@ -967,12 +967,20 @@ span.time {
   margin-left: 2em;
 }
 
+#player iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 i-slide {
   width: 40.889em;
   max-width: 100%;
   border-radius: 5px;
   outline: thin solid #444;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #transcript button {
