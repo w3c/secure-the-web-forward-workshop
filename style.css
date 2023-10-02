@@ -991,3 +991,44 @@ i-slide {
   cursor: pointer;
   margin-right: 0.2em;
 }
+
+.paper .button {
+  float: right;
+  margin-top: 0;
+}
+
+#agenda dl {
+  margin-left: 2em;
+  margin-top: 0;
+}
+
+#agenda dd {
+  margin: 0;
+}
+
+#agenda dd ul {
+  display: inline;
+  margin-left: 0;
+}
+
+#agenda dd li {
+  display: inline;
+}
+
+#agenda .button {
+  display: inline-block;
+  padding: .2em;
+  background: #005a9c;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  box-shadow: .2em .3em .4em #888;
+  width: 6em;
+  text-decoration: none;
+  text-align: center;
+}
+
+#agenda .button:not([href]) {
+  background: rgb(240,240,240);
+  color: rgb(100,100,100);
+}
