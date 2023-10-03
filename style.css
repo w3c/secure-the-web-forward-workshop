@@ -1032,3 +1032,11 @@ i-slide {
   background: rgb(240,240,240);
   color: rgb(100,100,100);
 }
+
+ul ul {
+  list-style-type: circle;
+}
+
+ul ul ul {
+  list-style-type: disc;
+}
