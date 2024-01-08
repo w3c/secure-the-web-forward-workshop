@@ -11,3 +11,5 @@ pages:
   url: papers.html
 - title: Live sessions
   url: agenda.html
+- title: Report
+  url: report.html
