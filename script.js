@@ -12,11 +12,19 @@
     };
 
     var createAnchorFromHeading = function (headingEl) {
+        let id;
+        if (headingEl.id) {
+            id = headingEl.id;
+        }
+        else {
+            const section = headingEl.closest('section');
+            id = section.id;
+        }
         return createEl(
             "a",
             {
                 className: "ref",
-                href: "#" + headingEl.id,
+                href: "#" + id,
                 textContent: "#",
                 title: headingEl.textContent
             }
@@ -24,7 +32,7 @@
     };
 
     window.addEventListener("load", function () {
-        Array.prototype.forEach.call(document.querySelectorAll("#main h1[id], #main h2[id], #main h3[id], #main h4[id], #main h5[id]"), function (el) {
+        Array.prototype.forEach.call(document.querySelectorAll("main section[id] h1, main section[id] h2, main section[id] h3, main section[id] h4, main section[id] h5"), function (el) {
             var a = createAnchorFromHeading(el);
             el.classList.add("has-ref");
             el.addEventListener("click", function () {
